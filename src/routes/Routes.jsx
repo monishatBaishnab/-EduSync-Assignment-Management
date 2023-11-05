@@ -9,6 +9,7 @@ import MyAssignment from "../pages/MyAssignment/MyAssignment";
 import SubmitedAssignment from "../pages/SubmitedAssignment/SubmitedAssignment";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
+import Assignments from "../pages/Assignments/Assignments";
 
 const Routes = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const Routes = createBrowserRouter([
             {
                 index: true,
                 element: <Home />
+            },
+            {
+                path: 'assignments',
+                element: <Assignments />
             },
             {
                 path: 'details/:id',
