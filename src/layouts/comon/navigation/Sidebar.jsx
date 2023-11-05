@@ -9,9 +9,10 @@ const Sidebar = ({ open, setOpen }) => {
             <div className="flex flex-col justify-between h-full">
                 <List>
                     <ListItem className="p-0"><NavLink className={({ isActive }) => isActive ? "text-light-orange bg-blue-gray-50 w-full py-3 px-4 rounded-lg" : "px-4 w-full py-3"} to='/'>Home</NavLink></ListItem>
-                    <ListItem className="p-0"><NavLink className={({ isActive }) => isActive ? "text-light-orange bg-blue-gray-50 w-full py-3 px-4 rounded-lg" : "px-4 w-full py-3"} to='/assignments'>Assignment</NavLink></ListItem>
-                    <ListItem className="p-0"><NavLink className={({ isActive }) => isActive ? "text-light-orange bg-blue-gray-50 w-full py-3 px-4 rounded-lg" : "px-4 w-full py-3"} to='/myAssignment'>My Assignment</NavLink></ListItem>
-                    <ListItem className="p-0"><NavLink className={({ isActive }) => isActive ? "text-light-orange bg-blue-gray-50 w-full py-3 px-4 rounded-lg" : "px-4 w-full py-3"} to='/submited'>Submited Assignment</NavLink></ListItem>
+                    <ListItem className="p-0"><NavLink className={({ isActive }) => isActive ? "text-light-orange bg-blue-gray-50 w-full py-3 px-4 rounded-lg" : "px-4 w-full py-3"} to='/assignments'>Assignments</NavLink></ListItem>
+                    <ListItem className="p-0"><NavLink className={({ isActive }) => isActive ? "text-light-orange bg-blue-gray-50 w-full py-3 px-4 rounded-lg" : "px-4 w-full py-3"} to='/create'>Create</NavLink></ListItem>
+                    <ListItem className="p-0"><NavLink className={({ isActive }) => isActive ? "text-light-orange bg-blue-gray-50 w-full py-3 px-4 rounded-lg" : "px-4 w-full py-3"} to='/myAssignment'>MyAssignment</NavLink></ListItem>
+                    <ListItem className="p-0"><NavLink className={({ isActive }) => isActive ? "text-light-orange bg-blue-gray-50 w-full py-3 px-4 rounded-lg" : "px-4 w-full py-3"} to='/submited'>Submited</NavLink></ListItem>
                 </List>
                 <div className="flex items-center justify-between gap-2 md:hidden">
                     <Link to='/signin' className="w-full">

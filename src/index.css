@@ -14,3 +14,7 @@
         @apply max-w-screen-2xl mx-auto py-10 px-5 md:px-10
     }
 }
+
+*{
+    font-family: 'DM Mono', monospace !important;
+}
