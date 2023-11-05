@@ -7,7 +7,7 @@ const FrequentlyAskQuestions = () => {
     const [open, setOpen] = useState(1);
     const handleOpen = value => setOpen(value);
     return (
-        <div className="bg-faq max-h-[500px]">
+        <div className="bg-faq">
                 <div className="bg-[#F1F2F4]/80">
                     <div className="container lg:py-28">
                         <div className="grid gap-5 grid-cols-1 md:grid-cols-2 items-center">
