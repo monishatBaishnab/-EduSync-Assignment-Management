@@ -3,6 +3,7 @@ import { AiOutlineUser } from 'react-icons/ai';
 import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { BiImageAlt } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const SignUpForm = () => {
     const handleSingUp = (e) => {
@@ -22,20 +23,21 @@ const SignUpForm = () => {
     }
     return (
         <div className="flex items-center justify-center flex-col w-full min-h-screen">
-            <div className="max-w-[480px]">
+            <div className="w-full md:w-[400px] py-5">
                 <div className="mb-3 text-center">
                     <Typography className="text-dark-gray" variant="h4">Create your account</Typography>
                     <Typography className="text-blue-gray-500 font-normal" variant="paragraph">Unlock all Features!</Typography>
                 </div>
-                <form onSubmit={handleSingUp} className="space-y-5 p-5">
+                <form onSubmit={handleSingUp} className="space-y-5 p-5 w-full">
                     <Input name="name" className="focus:outline-dark-gray" type="text" label="Name" icon={<AiOutlineUser />} />
                     <Input name="photo" className="focus:outline-dark-gray" type="text" label="Photo URL" icon={<BiImageAlt />} />
                     <Input name="email" className="focus:outline-dark-gray" type="email" label="Email" icon={<HiOutlineMail />} />
                     <Input name="password" className="focus:outline-dark-gray" type="password" label="Password" icon={<RiLockPasswordLine />} />
                     <Input name="cpassword" className="focus:outline-dark-gray" type="password" label="Confirm Password" icon={<RiLockPasswordLine />} />
                     <Checkbox name="tarms" label='Accept terms and conditions' />
-                    <Button type="submit" className="block w-full bg-light-orange shadow-none hover:shadow-none">Sign in</Button>
+                    <Button type="submit" className="block w-full bg-light-orange shadow-none hover:shadow-none">Sign up</Button>
                 </form>
+                <Typography className="text-center">You have account? <Link to='/signin' className="text-light-orange">Signin now</Link></Typography>
             </div>
         </div>
     );
