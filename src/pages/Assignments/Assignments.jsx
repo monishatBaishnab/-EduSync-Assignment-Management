@@ -6,7 +6,7 @@ import Pagination from "../../layouts/pagination/Pagination";
 const Assignments = () => {
     return (
         <div className="bg-[#f7f8f9]">
-            <AssignmentsTitle />
+            <AssignmentsTitle title='All Assignments' />
             <AssignmentsContainer />
             <Pagination />
         </div>
