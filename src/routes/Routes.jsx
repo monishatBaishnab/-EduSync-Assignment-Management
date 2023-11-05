@@ -52,7 +52,7 @@ const Routes = createBrowserRouter([
         element: <SignIn />
     },
     {
-        path: '/signip',
+        path: '/signup',
         element: <SignUp />
     }
 ]);
