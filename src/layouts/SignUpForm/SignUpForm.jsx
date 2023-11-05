@@ -23,7 +23,7 @@ const SignUpForm = () => {
 
         const toastId = toast.loading('Creating user...');
         if (tarms === 'on') {
-            if (password.length >= 6) {
+            if (password.length >= 6 && cpassword.length >= 6) {
                 if (password === cpassword) {
                     try {
                         await signUpWithEmailPass(email, password);
@@ -53,11 +53,11 @@ const SignUpForm = () => {
                     <Typography className="text-blue-gray-500 font-normal" variant="paragraph">Unlock all Features!</Typography>
                 </div>
                 <form onSubmit={handleSingUp} className="space-y-5 p-5 w-full">
-                    <Input name="name" className="focus:outline-dark-gray" type="text" label="Name" icon={<AiOutlineUser />} />
-                    <Input name="photo" className="focus:outline-dark-gray" type="text" label="Photo URL" icon={<BiImageAlt />} />
-                    <Input name="email" className="focus:outline-dark-gray" type="email" label="Email" icon={<HiOutlineMail />} />
-                    <Input name="password" className="focus:outline-dark-gray" type="password" label="Password" icon={<RiLockPasswordLine />} />
-                    <Input name="cpassword" className="focus:outline-dark-gray" type="password" label="Confirm Password" icon={<RiLockPasswordLine />} />
+                    <Input required name="name" className="focus:outline-dark-gray" type="text" label="Name" icon={<AiOutlineUser />} />
+                    <Input required name="photo" className="focus:outline-dark-gray" type="text" label="Photo URL" icon={<BiImageAlt />} />
+                    <Input required name="email" className="focus:outline-dark-gray" type="email" label="Email" icon={<HiOutlineMail />} />
+                    <Input required name="password" className="focus:outline-dark-gray" type="password" label="Password" icon={<RiLockPasswordLine />} />
+                    <Input required name="cpassword" className="focus:outline-dark-gray" type="password" label="Confirm Password" icon={<RiLockPasswordLine />} />
                     <Checkbox name="tarms" label='Accept terms and conditions' />
                     <Button type="submit" className="block w-full bg-light-orange shadow-none hover:shadow-none">Sign up</Button>
                 </form>

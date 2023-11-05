@@ -43,12 +43,12 @@ const AuthContext = ({ children }) => {
      // Authentication context information.
     const authInfo = {
         // Functions for authentication actions.
-        signInWithGoogl: () => handleAuth(signInWithPopup, googleProvider),
-        signInWitGithu: () => handleAuth(signInWithPopup, githubProvider),
+        signInWithGoogle: () => handleAuth(signInWithPopup, googleProvider),
+        signInWitGithub: () => handleAuth(signInWithPopup, githubProvider),
         signInWithEmailPass: (email, passsword) => handleAuth(signInWithEmailAndPassword, email, passsword),
         signUpWithEmailPass: (email, passsword) => handleAuth(createUserWithEmailAndPassword, email, passsword),
         updateUser,
-        signOutUse: () => handleAuth(signOut),
+        signOutUser: () => handleAuth(signOut),
 
         // Current user and loading status.
         user,

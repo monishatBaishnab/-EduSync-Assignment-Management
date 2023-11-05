@@ -6,9 +6,12 @@ import { useEffect, useState } from "react";
 import { FaBarsProgress } from 'react-icons/fa6';
 import Sidebar from "./Sidebar";
 import Headroom from "react-headroom";
+import ProfileMenu from "./ProfileMenu";
+import useAuth from "../../../hooks/useAuth";
 
 const Navigation = () => {
     const [open, setOpen] = useState(false);
+    const { user } = useAuth();
 
     useEffect(() => {
         window.addEventListener('resize', () => {
@@ -34,14 +37,20 @@ const Navigation = () => {
                                 </div>
 
                                 <div className="flex items-center gap-2">
-                                    <div className="hidden items-center md:flex">
-                                        <Link to='/signin'>
-                                            <Button className="shadow-none hover:shadow-none hover:bg-transparent rounded-full py-2 active:bg-transparent" variant="text">Sign in</Button>
-                                        </Link>
-                                        <Link to='/signup'>
-                                            <Button className="shadow-none hover:shadow-none rounded-full py-2">Sign up</Button>
-                                        </Link>
-                                    </div>
+                                    {
+                                        user === null ?
+                                            <div className="hidden items-center md:flex">
+                                                <Link to='/signin'>
+                                                    <Button className="shadow-none hover:shadow-none hover:bg-transparent rounded-full py-2 active:bg-transparent" variant="text">Sign in</Button>
+                                                </Link>
+                                                <Link to='/signup'>
+                                                    <Button className="shadow-none hover:shadow-none rounded-full py-2">Sign up</Button>
+                                                </Link>
+                                            </div>
+                                            :
+                                            <ProfileMenu />
+                                    }
+
                                     <Button onClick={() => setOpen(!open)} className="text-xl px-2.5 py-2.5 lg:hidden" variant="text"><FaBarsProgress /></Button>
                                 </div>
                             </div>
