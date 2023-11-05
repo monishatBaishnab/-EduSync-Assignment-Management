@@ -1,17 +1,31 @@
 import { Button, Input, Typography } from "@material-tailwind/react";
 import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook } from "react-icons/fa6";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const SignInForm = () => {
-    const handleSignIn = (e) => {
+    const {signInWithEmailPass} = useAuth();
+    const navigate = useNavigate();
+
+    const handleSignIn = async (e) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
         const email = form.get('email');
         const password = form.get('password');
-        console.log(email, password);
+        const toastId = toast.loading('Signining user...');
+
+        try {
+            await signInWithEmailPass(email, password);
+            toast.success('Sign-in success.', { id: toastId });
+            navigate('/');
+        } catch (err) {
+            console.log(err);
+            toast.error('Sign-in failed.', { id: toastId });
+        }
     }
     return (
         <div>

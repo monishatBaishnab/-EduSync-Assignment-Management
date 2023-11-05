@@ -3,10 +3,15 @@ import { AiOutlineUser } from 'react-icons/ai';
 import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { BiImageAlt } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const SignUpForm = () => {
-    const handleSingUp = (e) => {
+    const { signUpWithEmailPass, updateUser } = useAuth();
+    const navigate = useNavigate();
+
+    const handleSingUp = async(e) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
         const name = form.get('name');
@@ -15,10 +20,29 @@ const SignUpForm = () => {
         const password = form.get('password');
         const cpassword = form.get('cpassword');
         const tarms = form.get('tarms');
-        if(tarms === 'on'){
-            console.log(name, photo, email, password, cpassword);
-        }else{
-            console.log('select trams and condition');
+
+        const toastId = toast.loading('Creating user...');
+        if (tarms === 'on') {
+            if (password.length >= 6) {
+                if (password === cpassword) {
+                    try {
+                        await signUpWithEmailPass(email, password);
+                        await updateUser(name, photo);
+                        toast.success('User account created.', {id: toastId});
+                        navigate('/');
+                    } catch (err) {
+                        console.log(err);
+                        toast.error('Sign-up failed.', {id: toastId});
+                    }
+                    
+                }else{
+                    toast.error('Passwords do not match.', {id: toastId});
+                }
+            }else{
+                toast.error("Short Password Length.", {id: toastId});
+            }
+        } else {
+            toast.error("Accept Terms & Conditions.", {id: toastId});
         }
     }
     return (

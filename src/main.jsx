@@ -4,11 +4,16 @@ import './index.css'
 import { ThemeProvider } from '@material-tailwind/react'
 import { RouterProvider } from 'react-router-dom'
 import Routes from './routes/Routes.jsx'
+import AuthContext from './context/AuthContext.jsx'
+import { Toaster } from 'react-hot-toast'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider>
-      <RouterProvider router={Routes} />
+      <AuthContext>
+        <RouterProvider router={Routes} />
+      </AuthContext>
     </ThemeProvider>
+    <Toaster />
   </React.StrictMode>,
 )
