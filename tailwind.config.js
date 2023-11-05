@@ -10,6 +10,9 @@ module.exports = withMT({
       colors: {
         'light-orange': '#FBBE36',
         'dark-gray': '#142C44'
+      },
+      backgroundImage: {
+        'hero': "url('/hero-pattern.jpg')",
       }
     },
   },

@@ -20,7 +20,7 @@ const Navigation = () => {
     return (
         <div>
             <Headroom>
-                <div className="backdrop-saturate-200 backdrop-blur-2xl border-b">
+                <div className="backdrop-saturate-200 backdrop-blur-2xl bg-opacity-80 border-b">
                     <div className="container py-0">
                         <Navbar className="text-dark-gray max-w-full rounded-none bg-transparent border-none shadow-none px-0">
                             <div className="flex items-center justify-between">

@@ -5,10 +5,10 @@ const NavList = () => {
 
     return (
         <Typography as='ul' className="flex items-start flex-col gap-5 lg:flex-row lg:items-center">
-            <Typography className="font-normal" as='li'><NavLink className={({ isActive }) =>  isActive ? "text-light-orange font-medium" : ""} to='/'>Home</NavLink></Typography>
-            <Typography className="font-normal" as='li'><NavLink className={({ isActive }) =>  isActive ? "text-light-orange font-medium" : ""} to='/assignments'>Assignment</NavLink></Typography>
-            <Typography className="font-normal" as='li'><NavLink className={({ isActive }) =>  isActive ? "text-light-orange font-medium" : ""} to='/myAssignment'>My Assignment</NavLink></Typography>
-            <Typography className="font-normal" as='li'><NavLink className={({ isActive }) =>  isActive ? "text-light-orange font-medium" : ""} to='/submited'>Submited Assignment</NavLink></Typography>
+            <Typography className="font-normal" as='li'><NavLink className={({ isActive }) =>  isActive ? "bg-dark-gray text-white px-4 py-1 rounded-md" : ""} to='/'>Home</NavLink></Typography>
+            <Typography className="font-normal" as='li'><NavLink className={({ isActive }) =>  isActive ? "bg-dark-gray text-white px-4 py-1 rounded-md" : ""} to='/assignments'>Assignment</NavLink></Typography>
+            <Typography className="font-normal" as='li'><NavLink className={({ isActive }) =>  isActive ? "bg-dark-gray text-white px-4 py-1 rounded-md" : ""} to='/myAssignment'>My Assignment</NavLink></Typography>
+            <Typography className="font-normal" as='li'><NavLink className={({ isActive }) =>  isActive ? "bg-dark-gray text-white px-4 py-1 rounded-md" : ""} to='/submited'>Submited Assignment</NavLink></Typography>
         </Typography>
     );
 };
