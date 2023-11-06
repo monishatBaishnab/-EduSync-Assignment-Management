@@ -1,7 +1,8 @@
 import { Button, Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-import {BsArrowRight} from 'react-icons/bs';
+import { BsArrowRight } from 'react-icons/bs';
 import hero_frame from '../../assets/hero-frame.png';
+import Tilt from 'react-parallax-tilt';
 
 const Header = () => {
     return (
@@ -18,9 +19,11 @@ const Header = () => {
                                 </Link>
                             </div>
                         </div>
-                        <div className="flex items-center justify-center h-[500px] w-full overflow-hidden">
-                            <img className="object-contain w-full h-full" src={hero_frame} alt="" />
-                        </div>
+                        <Tilt scale={1.1} transitionSpeed={2500}>
+                            <div className="flex items-center justify-center h-[500px] w-full overflow-hidden">
+                                <img className="object-contain w-full h-full" src={hero_frame} alt="" />
+                            </div>
+                        </Tilt>
                     </div>
                 </div>
             </div>
