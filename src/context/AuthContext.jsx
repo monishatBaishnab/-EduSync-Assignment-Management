@@ -39,7 +39,13 @@ const AuthContext = ({ children }) => {
             setLoading(false);
             if(currentUser){
                 try {
-                    const res = await axios.post('/api/v1/token');
+                    await axios.post('/api/v1/token', {email: currentUser?.email});
+                } catch (error) {
+                    console.log(error);
+                }
+            }else{
+                try {
+                    const res = await axios.post('/api/v1/logout/');
                     await console.log(res.data);
                 } catch (error) {
                     console.log(error);

@@ -6,8 +6,9 @@ import { FcGoogle } from 'react-icons/fc';
 import { BsGithub } from "react-icons/bs";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import PropTypes from 'prop-types';
 
-const SignInForm = () => {
+const SignInForm = ({state}) => {
     const { signInWithEmailPass, signInWithGoogle, signInWitGithub } = useAuth();
     const navigate = useNavigate();
 
@@ -21,7 +22,11 @@ const SignInForm = () => {
         try {
             await signInWithEmailPass(email, password);
             toast.success('Sign-in success.', { id: toastId });
-            navigate('/');
+            if(state){
+                navigate(state);
+            }else{
+                navigate('/');
+            }
         } catch (err) {
             console.log(err);
             toast.error('Sign-in failed.', { id: toastId });
@@ -33,7 +38,11 @@ const SignInForm = () => {
         try {
             await signInWithGoogle();
             toast.success('Sign-in success.', { id: toastId });
-            navigate('/');
+            if(state){
+                navigate(state);
+            }else{
+                navigate('/');
+            }
         } catch (err) {
             console.log(err.message);
             toast.error('Sign-in failed.', { id: toastId });
@@ -45,7 +54,11 @@ const SignInForm = () => {
         try {
             await signInWitGithub();
             toast.success('Sign-in success.', { id: toastId });
-            navigate('/');
+            if(state){
+                navigate(state);
+            }else{
+                navigate('/');
+            }
         } catch (err) {
             console.log(err.message);
             toast.error('Sign-in failed.', { id: toastId });
@@ -75,5 +88,9 @@ const SignInForm = () => {
         </div>
     );
 };
+
+SignInForm.propTypes = {
+    state: PropTypes.string,
+}
 
 export default SignInForm;

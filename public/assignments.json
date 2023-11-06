@@ -1,0 +1,112 @@
+[
+    {
+        "title": "Mathematics Quiz",
+        "thumbnail": "https://i.ibb.co/WPnHK2R/Mathematics-Quiz.jpg",
+        "mark": 100,
+        "description": "This mathematics quiz covers a wide range of topics, including algebra, geometry, and calculus. Students will be tested on their problem-solving skills, mathematical reasoning, and critical thinking. The quiz consists of multiple-choice and open-ended questions, allowing students to demonstrate their mathematical knowledge. It's an ideal opportunity to showcase your math skills and compete for a perfect score.",
+        "level": "medium",
+        "dueDate": "2023-11-15",
+        "user": {
+            "email": "baishnabmonishat@gmail.com"
+        }
+    },
+    {
+        "title": "Literature Essay",
+        "thumbnail": "https://i.ibb.co/cCRvHD4/Literature-Essay.jpg",
+        "mark": 150,
+        "description": "In this literature essay assignment, you will explore a classic piece of literature in-depth. Choose a novel, play, or poem of your preference and craft an insightful essay. Analyze the themes, characters, and literary techniques used by the author. Your essay should provide a well-reasoned interpretation of the work and demonstrate your understanding of literary analysis. This is a challenging assignment that will test your literary criticism skills.",
+        "level": "hard",
+        "dueDate": "2023-12-05",
+        "user": {
+            "email": "baishnabmonishat@gmail.com"
+        }
+    },
+    {
+        "title": "History Research Project",
+        "thumbnail": "https://i.ibb.co/Qnrq538/History-Research-Project.jpg",
+        "mark": 200,
+        "description": "For this history research project, you are tasked with conducting in-depth research on a historical event, figure, or era of your choice. Your research should include primary and secondary sources, critical analysis, and well-documented findings. Create a detailed report or presentation that educates and engages the audience. This assignment will challenge your research and historical analysis skills and encourage you to explore a fascinating aspect of the past.",
+        "level": "hard",
+        "dueDate": "2024-01-20",
+        "user": {
+            "email": "baishnabmonishat@gmail.com"
+        }
+    },
+    {
+        "title": "Science Experiment",
+        "thumbnail": "https://i.ibb.co/85wgxK9/Science-Experiment.jpg",
+        "mark": 120,
+        "description": "In this science experiment assignment, you will design and conduct a hands-on scientific experiment. Document your hypothesis, experimental procedure, data collection, and analysis. Your final report should include observations, findings, and conclusions. This is an opportunity to apply scientific principles and enhance your research and experimentation skills.",
+        "level": "medium",
+        "dueDate": "2023-11-30",
+        "user": {
+            "email": "baishnabmonishat@gmail.com"
+        }
+    },
+    {
+        "title": "Coding Challenge",
+        "thumbnail": "https://i.ibb.co/3NjvNTK/Coding-Challenge.jpg",
+        "mark": 180,
+        "description": "The coding challenge is designed to test your programming skills. You will be presented with a series of coding problems that require problem-solving and algorithmic thinking. Solve each problem using your preferred programming language and provide well-documented code. This assignment is an excellent opportunity to showcase your coding abilities and logical reasoning.",
+        "level": "easy",
+        "dueDate": "2023-12-10",
+        "user": {
+            "email": "baishnabmonishat@gmail.com"
+        }
+    },
+    {
+        "title": "Biology Research Paper",
+        "thumbnail": "https://i.ibb.co/KyTs73w/Biology-Research-Paper.jpg",
+        "mark": 160,
+        "description": "For the Biology Research Paper, you will choose a relevant topic in the field of biology and conduct in-depth research. Your paper should include a literature review, experimental findings (if applicable), and a comprehensive discussion of your chosen topic. This assignment will challenge your research and scientific writing skills and provide an opportunity to contribute to the field of biology.",
+        "level": "medium",
+        "dueDate": "2023-12-28",
+        "user": {
+            "email": "baishnabmonishat@gmail.com"
+        }
+    },
+    {
+        "title": "Business Case Analysis",
+        "thumbnail": "https://i.ibb.co/FhbpP7d/Business-Case-Analysis.jpg",
+        "mark": 170,
+        "description": "In the Business Case Analysis assignment, you will analyze a real-world business case. Examine the company's challenges, opportunities, and strategies for success. Provide recommendations for addressing the issues presented in the case. This assignment will require critical thinking, business acumen, and the ability to make data-driven decisions.",
+        "level": "hard",
+        "dueDate": "2023-12-15",
+        "user": {
+            "email": "baishnabmonishat@gmail.com"
+        }
+    },
+    {
+        "title": "Art History Presentation",
+        "thumbnail": "https://i.ibb.co/Ny7YpPP/Art-History-Presentation.jpg",
+        "mark": 140,
+        "description": "For the Art History Presentation, you will select an art movement or artist and prepare a visual presentation. Discuss the historical context, key works, and the impact of the chosen art on culture and society. This assignment combines research, visual storytelling, and historical analysis to deepen your understanding of art history.",
+        "level": "easy",
+        "dueDate": "2023-12-08",
+        "user": {
+            "email": "baishnabmonishat@gmail.com"
+        }
+    },
+    {
+        "title": "Physics Problem Solving",
+        "thumbnail": "https://i.ibb.co/VNhmMgw/Physics-Problem-Solving.jpg",
+        "mark": 130,
+        "description": "In the Physics Problem Solving assignment, you will tackle a set of complex physics problems. Apply your knowledge of physics principles to solve these challenges. Show your problem-solving skills and your ability to apply physics concepts in practical scenarios. This assignment will strengthen your problem-solving and physics understanding.",
+        "level": "medium",
+        "dueDate": "2023-12-20",
+        "user": {
+            "email": "baishnabmonishat@gmail.com"
+        }
+    },
+    {
+        "title": "Geography Field Report",
+        "thumbnail": "https://i.ibb.co/sHBd4sk/Geography-Field-Report.jpg",
+        "mark": 150,
+        "description": "For the Geography Field Report, you will conduct fieldwork in a geographical area of your choice. Collect data, make observations, and analyze the geographic features and processes at work. Present your findings in a comprehensive report. This assignment will enhance your fieldwork and geographical analysis skills.",
+        "level": "hard",
+        "dueDate": "2024-01-10",
+        "user": {
+            "email": "baishnabmonishat@gmail.com"
+        }
+    }
+]

@@ -5,11 +5,11 @@ const instance = axios.create({
     withCredentials: true
 })
 const useAxios = () => {
-    instance.interceptors.response.use(response => {
-        return response;
-    }, error => {
-        console.log(error,"from axios interceptors...");
-    })
+    // instance.interceptors.response.use(response => {
+    //     return response;
+    // }, error => {
+    //     console.log(error,"from axios interceptors...");
+    // })
     return instance;
 };
 
