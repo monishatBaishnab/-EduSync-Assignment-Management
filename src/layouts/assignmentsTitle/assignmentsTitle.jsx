@@ -1,15 +1,7 @@
 import { Option, Select, Typography } from "@material-tailwind/react";
 import PropTypes from 'prop-types';
-import { useEffect, useState } from "react";
 
-const AssignmentsTitle = ({ title, setUrl }) => {
-    const [filterValue, setFilterValue] = useState('');
-    const [sortValue, setSortValue] = useState('');
-
-    useEffect(() => {
-        const url = `/assignments?level=${filterValue}&sort=mark&sortOrder=${sortValue}`;
-        setUrl(url);
-    }, [filterValue, sortValue, setUrl])
+const AssignmentsTitle = ({ title, setFilterValue, setSortValue }) => {
 
     const handleFilter = (value) => {
         setFilterValue(value);
@@ -48,7 +40,8 @@ const AssignmentsTitle = ({ title, setUrl }) => {
 
 AssignmentsTitle.propTypes = {
     title: PropTypes.string,
-    setUrl: PropTypes.func,
+    setFilterValue: PropTypes.func,
+    setSortValue: PropTypes.func,
 }
 
 export default AssignmentsTitle;

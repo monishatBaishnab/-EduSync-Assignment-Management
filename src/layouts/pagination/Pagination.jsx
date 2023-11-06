@@ -1,10 +1,17 @@
 import { IconButton } from "@material-tailwind/react";
-import { useState } from "react";
-import {BsArrowLeft, BsArrowRight} from 'react-icons/bs'
+import { useEffect, useState } from "react";
+import {BsArrowLeft, BsArrowRight} from 'react-icons/bs';
+import PropTypes from 'prop-types';
 
-const Pagination = () => {
+const Pagination = ({setPage, offset, count = 1}) => {
     const [active, setActive] = useState(1);
 
+    useEffect(() => {
+        setPage(active);
+    }, [active, setPage]);
+
+    const pages = Math.ceil(parseInt(count) / parseInt(offset));
+    
     const getItemProps = (index) => ({
         variant: active === index ? "filled" : "text",
         color: "gray",
@@ -19,9 +26,10 @@ const Pagination = () => {
 
     const prev = () => {
         if (active === 1) return;
-
         setActive(active - 1);
     };
+
+    
 
     return (
         <div className="container">
@@ -34,14 +42,14 @@ const Pagination = () => {
                     <BsArrowLeft className="text-xl" />
                 </IconButton>
                 <div className="flex items-center gap-2">
-                    <IconButton {...getItemProps(1)}>1</IconButton>
-                    <IconButton {...getItemProps(2)}>2</IconButton>
-                    <IconButton {...getItemProps(3)}>3</IconButton>
+                    {
+                        [...Array(pages).keys()]?.map(page => <IconButton key={page} {...getItemProps(page+1)}>{page+1}</IconButton>)
+                    }
                 </div>
                 <IconButton
                     variant="text"
                     onClick={next}
-                    disabled={active === 5}
+                    disabled={active === 2}
                 >
                 <BsArrowRight className="text-xl" />
 
@@ -50,5 +58,11 @@ const Pagination = () => {
         </div>
     );
 };
+
+Pagination.propTypes = {
+    setPage: PropTypes.func,
+    offset: PropTypes.string,
+    count: PropTypes.number,
+}
 
 export default Pagination;
