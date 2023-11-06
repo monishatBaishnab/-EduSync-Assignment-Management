@@ -36,7 +36,7 @@ const AssignmentForm = ({ title, description, assignment = {} }) => {
             thumbnail,
             mark: parseInt(mark),
             description,
-            lavel,
+            level: lavel,
             dueDate,
             user: {
                 email
@@ -46,7 +46,7 @@ const AssignmentForm = ({ title, description, assignment = {} }) => {
         if (title && thumbnail && mark && description && lavel && startDate) {
            
             try {
-                const res = await axios.post(`http://localhost:5000/api/v1/assignments?email=${email}`, assignment);
+                const res = await axios.post(`/assignments?email=${email}`, assignment);
                 const data = await res.data;
                 if(data?.acknowledged){
                     toast.success('Assignment Addedd.', {id: toastId});
