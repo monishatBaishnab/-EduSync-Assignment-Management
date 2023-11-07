@@ -34,7 +34,7 @@ const UpdateAssignmentForm = ({ title, description, assignment = {} }) => {
     useEffect(() => {
         setStartDate(new Date(oldDueDate ? oldDueDate : date));
     }, [oldDueDate, date])
-    
+
     // Set the level from oldLevel
     useEffect(() => {
         setLavel(oldlevel)
@@ -79,7 +79,7 @@ const UpdateAssignmentForm = ({ title, description, assignment = {} }) => {
                     navigate('/myAssignment')
                 }
             } catch (error) {
-                toast.error(error?.response?.data?.error, { id: toastId })
+                    toast.error(error?.response?.data?.error, { id: toastId })
             }
         } else {
             toast.error('Fill all input field.', { id: toastId })
@@ -126,7 +126,7 @@ const UpdateAssignmentForm = ({ title, description, assignment = {} }) => {
                         <Textarea defaultValue={oldDescription ? oldDescription : ''} required name="description" placeholder="Assignment Description" id="description" className=" !border-t-blue-gray-200 focus:!border-t-gray-900" labelProps={{ className: "before:content-none after:content-none", }} />
                     </div>
                     <div className="flex items-center gap-5">
-                        <Button type="submit" className="capitalize shadow-none hover:shadow-none" color="light-blue">Create</Button>
+                        <Button type="submit" className="capitalize shadow-none hover:shadow-none" color="light-blue">Update</Button>
                         <Button onClick={() => navigate('/')} type="button" className="capitalize shadow-none hover:shadow-none" color="red">Cancel</Button>
                     </div>
                 </form>

@@ -5,7 +5,7 @@ import AssignmentCard from '../../components/AssignmentCard';
 
 const AssignmentsContainer = ({ query = {}, page = '' }) => {
 
-    const { data: assignments, isLoading } = query || {};
+    const { data: assignments, isLoading, refetch } = query || {};
 
     return (
         <div>
@@ -13,7 +13,7 @@ const AssignmentsContainer = ({ query = {}, page = '' }) => {
                 <div className="grid gap-5 grid-cols-1 sm:grid-cols-2">
                     {
                         isLoading ? <LoadingAssignmentCard /> :
-                            assignments?.data?.assignments?.map(assignment => <AssignmentCard page={page} assignment={assignment} key={assignment._id} />)
+                            assignments?.data?.assignments?.map(assignment => <AssignmentCard refetch={refetch} page={page} assignment={assignment} key={assignment._id} />)
                     }
                 </div>
             </div>

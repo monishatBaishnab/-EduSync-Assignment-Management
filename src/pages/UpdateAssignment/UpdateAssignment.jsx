@@ -13,7 +13,7 @@ const UpdateAssignment = () => {
 
     useEffect(() => {
         axios.get(`/assignments/${id}?email=${user.email}`)
-            .then(res => setAssignment(res.data));
+            .then(res => setAssignment(res?.data));
     }, [axios, id, user.email])
     return (
         <div>

@@ -32,6 +32,7 @@ const useLottieAnimation = () => {
         loop: true
     };
 
+
     const collaboration = useLottie(collaborationOption);
     const resource = useLottie(resourceOption);
     const marking = useLottie(markingOption);

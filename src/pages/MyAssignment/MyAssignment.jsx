@@ -8,10 +8,21 @@ import AssignmentsContainer from "../../layouts/assignmentsContainer/Assignments
 const MyAssignment = () => {
     const [filterValue, setFilterValue] = useState('');
     const [sortValue, setSortValue] = useState('');
-
+    
     const axios = useAxios();
+    
     const { user } = useAuth();
-    const url = `/assignments?email=${user.email}&level=${filterValue}&sort=mark&sortOrder=${sortValue}`;
+
+    let url = `/assignments?email=${user.email}`;
+    if(filterValue && sortValue){
+        url = `/assignments?email=${user.email}&level=${filterValue}&sort=mark&sortOrder=${sortValue}`;
+    }
+    else if(sortValue){
+        url = `/assignments?email=${user.email}?sort=mark&sortOrder=${sortValue}`;
+    }
+    else if(filterValue){
+        url = `/assignments?email=${user.email}&level=${filterValue}`;
+    }
     const getAssignments = async () => {
         const res = await axios.get(url);
         return res;

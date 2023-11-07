@@ -3,10 +3,35 @@ import PropTypes from 'prop-types'
 import { AiOutlineEye } from "react-icons/ai";
 import { BsFillTrash3Fill, BsPencilSquare } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import useAxios from "../hooks/useAxios";
+import toast from "react-hot-toast";
+import useAuth from "../hooks/useAuth";
 
-const AssignmentCard = ({ assignment, page }) => {
-    const { _id, title, thumbnail, mark, level } = assignment || {};
+const AssignmentCard = ({ assignment, refetch, page }) => {
+    const { _id, title, thumbnail, mark, level, user: auth } = assignment || {};
+    const { user } = useAuth();
     const navigate = useNavigate();
+    const axios = useAxios();
+
+    const handleDelete = async () => {
+        const toastId = toast.loading('Deleteing Assignment....');
+        try {
+            const res = await axios.delete(`/assignments/${_id}?email=${user?.email}&assignmentEmail=${auth?.email}`);
+            try {
+                const data = await res.data;
+                if (data?.acknowledged) {
+                    toast.success('Assignment Deleted.', { id: toastId });
+                    refetch();
+                }
+            } catch (error) {
+                toast.error('Unauthorized access.', {id: toastId});
+            }
+        } catch (error) {
+            if (error) {
+                toast.error("Internal server error.", { id: toastId });
+            }
+        }
+    }
 
     return (
         <div className="p-5 border bg-white md:flex md:items-center md:gap-5">
@@ -25,7 +50,7 @@ const AssignmentCard = ({ assignment, page }) => {
 
                     {
                         page === 'delete' &&
-                        <IconButton className="w-full shadow-none hover:shadow-none text-lg" color="red"><BsFillTrash3Fill /></IconButton>
+                        <IconButton onClick={handleDelete} className="w-full shadow-none hover:shadow-none text-lg" color="red"><BsFillTrash3Fill /></IconButton>
                     }
                 </div>
             </div>
@@ -36,6 +61,7 @@ const AssignmentCard = ({ assignment, page }) => {
 AssignmentCard.propTypes = {
     assignment: PropTypes.object,
     page: PropTypes.string,
+    refetch: PropTypes.func,
 }
 
 export default AssignmentCard;

@@ -46,7 +46,8 @@ const AuthContext = ({ children }) => {
             }else{
                 try {
                     const res = await axios.post('/logout');
-                    await console.log(res.data);
+                    const data = await res.data;
+                    console.log(data);
                 } catch (error) {
                     console.log(error);
                 }
@@ -58,7 +59,7 @@ const AuthContext = ({ children }) => {
     }, [axios])
 
      // Authentication context information.
-    const authInfo = {
+    const AuthInfo = {
         // Functions for authentication actions.
         signInWithGoogle: () => handleAuth(signInWithPopup, googleProvider),
         signInWitGithub: () => handleAuth(signInWithPopup, githubProvider),
@@ -74,7 +75,7 @@ const AuthContext = ({ children }) => {
 
     // Provide authentication context to child components.
     return (
-        <UserContext.Provider value={authInfo}>
+        <UserContext.Provider value={AuthInfo}>
             {children}
         </UserContext.Provider>
     );
