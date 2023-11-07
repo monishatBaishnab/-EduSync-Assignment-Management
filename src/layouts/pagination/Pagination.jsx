@@ -1,9 +1,9 @@
 import { IconButton } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
-import {BsArrowLeft, BsArrowRight} from 'react-icons/bs';
+import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 
-const Pagination = ({setPage, offset, count = 1}) => {
+const Pagination = ({ setPage, offset, count = 1 }) => {
     const [active, setActive] = useState(1);
 
     useEffect(() => {
@@ -11,7 +11,7 @@ const Pagination = ({setPage, offset, count = 1}) => {
     }, [active, setPage]);
 
     const pages = Math.ceil(parseInt(count) / parseInt(offset));
-    
+
     const getItemProps = (index) => ({
         variant: active === index ? "filled" : "text",
         color: "gray",
@@ -29,7 +29,7 @@ const Pagination = ({setPage, offset, count = 1}) => {
         setActive(active - 1);
     };
 
-    
+
 
     return (
         <div className="container">
@@ -43,7 +43,7 @@ const Pagination = ({setPage, offset, count = 1}) => {
                 </IconButton>
                 <div className="flex items-center gap-2">
                     {
-                        [...Array(pages).keys()]?.map(page => <IconButton key={page} {...getItemProps(page+1)}>{page+1}</IconButton>)
+                        [...Array(pages ? pages : 1).keys()]?.map(page => <IconButton key={page} {...getItemProps(page + 1)}>{page + 1}</IconButton>)
                     }
                 </div>
                 <IconButton
@@ -51,7 +51,7 @@ const Pagination = ({setPage, offset, count = 1}) => {
                     onClick={next}
                     disabled={active === 2}
                 >
-                <BsArrowRight className="text-xl" />
+                    <BsArrowRight className="text-xl" />
 
                 </IconButton>
             </div>
@@ -61,7 +61,7 @@ const Pagination = ({setPage, offset, count = 1}) => {
 
 Pagination.propTypes = {
     setPage: PropTypes.func,
-    offset: PropTypes.string,
+    offset: PropTypes.number,
     count: PropTypes.number,
 }
 

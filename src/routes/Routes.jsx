@@ -35,7 +35,7 @@ const Routes = createBrowserRouter([
                 element: <PrivateRoute><CreateAssignment /></PrivateRoute>
             },
             {
-                path: 'update',
+                path: 'update/:id',
                 element: <PrivateRoute><UpdateAssignment /></PrivateRoute>
             },
             {

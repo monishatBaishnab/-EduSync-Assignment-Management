@@ -1,14 +1,29 @@
-import AssignmentsContainer from "../../layouts/assignmentsContainer/AssignmentsContainer";
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../hooks/useAuth";
+import useAxios from "../../hooks/useAxios";
 import AssignmentsTitle from "../../layouts/assignmentsTitle/assignmentsTitle";
-import Pagination from "../../layouts/pagination/Pagination";
+import { useState } from "react";
+import AssignmentsContainer from "../../layouts/assignmentsContainer/AssignmentsContainer";
 
 const MyAssignment = () => {
+    const [filterValue, setFilterValue] = useState('');
+    const [sortValue, setSortValue] = useState('');
+
+    const axios = useAxios();
+    const { user } = useAuth();
+    const url = `/assignments?email=${user.email}&level=${filterValue}&sort=mark&sortOrder=${sortValue}`;
+    const getAssignments = async () => {
+        const res = await axios.get(url);
+        return res;
+    }
+    const queryKey =  ['assignments', sortValue, filterValue];
+    const query = useQuery({ queryKey, queryFn: getAssignments });
+    
     return (
         <div>
             <div className="bg-[#f7f8f9]">
-                <AssignmentsTitle title='My Assignments' />
-                <AssignmentsContainer />
-                <Pagination />
+                <AssignmentsTitle setFilterValue={setFilterValue} setSortValue={setSortValue} title='My Assignments' />
+                <AssignmentsContainer page="delete" query={query} />
             </div>
         </div>
     );
