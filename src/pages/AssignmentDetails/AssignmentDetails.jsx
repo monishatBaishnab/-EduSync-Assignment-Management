@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
 import { useEffect, useState } from "react";
 import { Button, Dialog, DialogBody, DialogHeader, Input, Textarea, Typography } from "@material-tailwind/react";
+import toast from "react-hot-toast";
 
 const AssignmentDetails = () => {
     const [assignment, setAssignment] = useState({});
@@ -11,16 +12,35 @@ const AssignmentDetails = () => {
     const { user } = useAuth();
     const { id } = useParams();
     const axios = useAxios();
-    const { title, thumbnail, mark, description, level, dueDate, user: auth } = assignment || {};
+    const { _id, title, thumbnail, mark, description, level, dueDate, user: auth } = assignment || {};
 
     const handleOpen = () => setOpen(!open);
 
-    const handleResponse = (e) => { 
+    const handleResponse = async (e) => { 
+        const toastId = toast.loading('Submiting assignment...');
         e.preventDefault();
         const form = e.target;
         const pdf = form.pdf.value;
         const note = form.note.value;
-        console.log(pdf, note);
+        const submitedAssignment = {
+            asssignmentId: _id,
+            title,
+            mark,
+            submitedDate: new Date().toLocaleDateString(),
+            level,
+            status: 'pending',
+            pdf,
+            note
+        }
+        
+        const res = await axios.post(`/submited/assignments?email=${user.email}`, submitedAssignment);
+        const data = await res.data;
+        if(data.acknowledged){
+            toast.success('Submited success.', {id: toastId});
+        }else{
+            toast.error('Inernal server error.', {id: toastId});
+        }
+
         handleOpen();
     }
 
