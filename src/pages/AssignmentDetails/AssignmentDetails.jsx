@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
 import { useEffect, useState } from "react";
@@ -8,10 +8,11 @@ import toast from "react-hot-toast";
 const AssignmentDetails = () => {
     const [assignment, setAssignment] = useState({});
     const [open, setOpen] = useState(false);
-
     const { user } = useAuth();
     const { id } = useParams();
     const axios = useAxios();
+    const navigate = useNavigate();
+
     const { _id, title, thumbnail, mark, description, level, dueDate, user: auth } = assignment || {};
 
     const handleOpen = () => setOpen(!open);
@@ -30,13 +31,17 @@ const AssignmentDetails = () => {
             level,
             status: 'pending',
             pdf,
-            note
+            note,
+            submitedUser: user.email,
+            givenMark: null,
+            givenMarkUser: null,
         }
         
         const res = await axios.post(`/submited/assignments?email=${user.email}`, submitedAssignment);
         const data = await res.data;
         if(data.acknowledged){
             toast.success('Submited success.', {id: toastId});
+            navigate('/submited');
         }else{
             toast.error('Inernal server error.', {id: toastId});
         }

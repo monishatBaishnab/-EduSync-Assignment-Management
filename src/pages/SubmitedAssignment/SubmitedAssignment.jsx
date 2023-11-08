@@ -1,8 +1,150 @@
+import useAxios from "../../hooks/useAxios";
+import useAuth from "../../hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import { IconButton, Tab, TabPanel, Tabs, TabsBody, TabsHeader, Typography } from "@material-tailwind/react";
+import { AiOutlineEye } from 'react-icons/ai';
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const SubmitedAssignment = () => {
+    const axios = useAxios();
+    const { user } = useAuth();
+    const navigate = useNavigate();
+    const [status, setStutus] = useState('pending');
+
+    const getSubmitdAssignments = async () => {
+        const res = await axios.get(`/submited/assignments?email=${user.email}&status=${status}`);
+        return res.data;
+    }
+    const { data } = useQuery({ queryKey: ['submitedAssignments', status], queryFn: getSubmitdAssignments });
+
+    console.log(data);
+
+
     return (
-        <div>
-            
+        <div className="container">
+            <div className="container">
+                <Tabs value="pending">
+                    <TabsHeader>
+                        <Tab value='pending' onClick={() => setStutus('pending')}>
+                            Pending
+                        </Tab>
+                        <Tab value='complate' onClick={() => setStutus('complate')}>
+                            Complate
+                        </Tab>
+                    </TabsHeader>
+                    <TabsBody>
+                        <TabPanel value='pending'>
+                            <div className="overflow-x-scroll md:overflow-hidden">
+                                <table className="w-full min-w-max table-auto text-left">
+                                    <thead>
+                                        <tr>
+                                            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >
+                                                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70"> Title </Typography>
+                                            </th>
+                                            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >
+                                                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70"> Mark </Typography>
+                                            </th>
+                                            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >
+                                                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70"> User </Typography>
+                                            </th>
+                                            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >
+                                                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70"> Action </Typography>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {data?.map(submitedAssignment => {
+                                            return (
+                                                <tr key={submitedAssignment._id}>
+                                                    <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
+                                                        <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                            {
+                                                                submitedAssignment.title
+                                                            }
+                                                        </Typography>
+                                                    </td>
+                                                    <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
+                                                        <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                            {
+                                                                submitedAssignment.mark
+                                                            }
+                                                        </Typography>
+                                                    </td>
+                                                    <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
+                                                        <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                            {
+                                                                submitedAssignment.submitedUser
+                                                            }
+                                                        </Typography>
+                                                    </td>
+                                                    <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
+                                                        <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                            <IconButton color="light-blue" onClick={() => navigate(`/submitedDetails/${submitedAssignment._id}`)}>
+                                                                <AiOutlineEye className="text-xl" />
+                                                            </IconButton>
+                                                        </Typography>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </TabPanel>
+                    </TabsBody>
+                    <TabsBody>
+                        <TabPanel value='complate'>
+                            <div className="overflow-x-scroll md:overflow-hidden">
+                                <table className="w-full min-w-max table-auto text-left">
+                                    <thead>
+                                        <tr>
+                                            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >
+                                                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70"> Title </Typography>
+                                            </th>
+                                            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >
+                                                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70"> Given Mark </Typography>
+                                            </th>
+                                            <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >
+                                                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70"> Giver Mark User </Typography>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {data?.map(submitedAssignment => {
+                                            return (
+                                                <tr key={submitedAssignment._id}>
+                                                    <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
+                                                        <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                            {
+                                                                submitedAssignment.title
+                                                            }
+                                                        </Typography>
+                                                    </td>
+                                                    <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
+                                                        <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                            {
+                                                                `${submitedAssignment.givenMark} out of ${submitedAssignment.mark}`
+                                                            }
+                                                        </Typography>
+                                                    </td>
+                                                    <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
+                                                        <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                            {
+                                                             submitedAssignment.givenMarkUser
+                                                            }
+                                                        </Typography>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </TabPanel>
+                    </TabsBody>
+                </Tabs>
+            </div>
         </div>
     );
 };
