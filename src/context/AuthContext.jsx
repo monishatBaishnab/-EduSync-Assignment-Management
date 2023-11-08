@@ -26,24 +26,25 @@ const AuthContext = ({ children }) => {
         return authAction(auth, ...params);
     }
 
-    const updateUser =  (name, photo) => {
+    const updateUser = (name, photo) => {
         setLoading(true);
-        return   updateProfile(auth.currentUser, { displayName: name, photoURL: photo })
+        return updateProfile(auth.currentUser, { displayName: name, photoURL: photo })
     };
 
     // Unsubscribe from the authentication state changes when the component unmounts.
     useEffect(() => {
         // Effect to listen for changes in authentication state.
-        const unSubscribe = () => onAuthStateChanged(auth, async (currentUser) => {
+        const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
             setUser(currentUser);
+            console.log(currentUser);
             setLoading(false);
-            if(currentUser){
+            if (currentUser) {
                 try {
-                    await axios.post('/token', {email: currentUser?.email});
+                    await axios.post('/token', { email: currentUser?.email });
                 } catch (error) {
                     console.log(error);
                 }
-            }else{
+            } else {
                 try {
                     const res = await axios.post('/logout');
                     const data = await res.data;
@@ -58,7 +59,7 @@ const AuthContext = ({ children }) => {
         return () => unSubscribe();
     }, [axios])
 
-     // Authentication context information.
+    // Authentication context information.
     const AuthInfo = {
         // Functions for authentication actions.
         signInWithGoogle: () => handleAuth(signInWithPopup, googleProvider),
@@ -72,6 +73,8 @@ const AuthContext = ({ children }) => {
         user,
         loading
     }
+
+    console.log(user);
 
     // Provide authentication context to child components.
     return (
