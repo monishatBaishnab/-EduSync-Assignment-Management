@@ -120,32 +120,32 @@ const SubmitedAssignment = () => {
                                                 return (
                                                     <tr key={submitedAssignment._id}>
                                                         <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
-                                                            <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                            <span color="blue-gray" className="font-normal" >
                                                                 {
                                                                     submitedAssignment.title
                                                                 }
-                                                            </Typography>
+                                                            </span>
                                                         </td>
                                                         <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
-                                                            <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                            <span color="blue-gray" className="font-normal" >
                                                                 {
                                                                     `${submitedAssignment.givenMark} out of ${submitedAssignment.mark}`
                                                                 }
-                                                            </Typography>
+                                                            </span>
                                                         </td>
                                                         <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
-                                                            <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                            <span color="blue-gray" className="font-normal" >
                                                                 {
                                                                     submitedAssignment.submitedUser
                                                                 }
-                                                            </Typography>
+                                                            </span>
                                                         </td>
                                                         <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
-                                                            <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                            <span color="blue-gray" className="font-normal" >
                                                                 {
                                                                     submitedAssignment.givenMarkUser
                                                                 }
-                                                            </Typography>
+                                                            </span>
                                                         </td>
                                                     </tr>
                                                 )
