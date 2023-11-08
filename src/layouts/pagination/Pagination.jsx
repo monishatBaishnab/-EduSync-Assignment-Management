@@ -19,7 +19,7 @@ const Pagination = ({ setPage, offset, count = 1 }) => {
     });
 
     const next = () => {
-        if (active === 5) return;
+        if (active === parseInt(pages)) return;
 
         setActive(active + 1);
     };
@@ -49,7 +49,7 @@ const Pagination = ({ setPage, offset, count = 1 }) => {
                 <IconButton
                     variant="text"
                     onClick={next}
-                    disabled={active === 2}
+                    disabled={active === parseInt(pages)}
                 >
                     <BsArrowRight className="text-xl" />
 
