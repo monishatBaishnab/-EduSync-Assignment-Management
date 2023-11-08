@@ -19,14 +19,12 @@ const SubmitedAssignment = () => {
     }
     const { data } = useQuery({ queryKey: ['submitedAssignments', status], queryFn: getSubmitdAssignments });
 
-    console.log(data);
-
 
     return (
         <div className="container">
             <div className="container">
                 <Tabs value="pending">
-                    <TabsHeader>
+                    <TabsHeader className="z-0">
                         <Tab value='pending' onClick={() => setStutus('pending')}>
                             Pending
                         </Tab>
@@ -34,11 +32,11 @@ const SubmitedAssignment = () => {
                             Complate
                         </Tab>
                     </TabsHeader>
-                    <TabsBody>
+                    <TabsBody className="z-0">
                         <TabPanel value='pending'>
                             {data?.length > 0 ?
                                 <div className="overflow-x-scroll md:overflow-hidden">
-                                    <table className="w-full min-w-max table-auto text-left">
+                                    <table className="w-full min-w-max table-auto text-left z-0">
                                         <thead>
                                             <tr>
                                                 <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >
@@ -96,11 +94,11 @@ const SubmitedAssignment = () => {
                                 : <NoDataFound />}
                         </TabPanel>
                     </TabsBody>
-                    <TabsBody>
+                    <TabsBody className="z-0">
                         <TabPanel value='complate'>
                             {data?.length > 0 ?
                                 <div className="overflow-x-scroll md:overflow-hidden">
-                                    <table className="w-full min-w-max table-auto text-left">
+                                    <table className="w-full min-w-max table-auto text-left z-0">
                                         <thead>
                                             <tr>
                                                 <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >

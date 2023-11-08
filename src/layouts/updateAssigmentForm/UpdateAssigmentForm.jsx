@@ -76,10 +76,14 @@ const UpdateAssignmentForm = ({ title, description, assignment = {} }) => {
                     e.target.reset();
                     setLavel('');
                     setStartDate(new Date());
-                    navigate('/myAssignment')
+                    navigate('/assignments');
                 }
             } catch (error) {
+                console.log(error);
+                if(error?.response?.data?.error){
                     toast.error(error?.response?.data?.error, { id: toastId })
+                }
+                toast.error("Unauthorized access.", { id: toastId })
             }
         } else {
             toast.error('Fill all input field.', { id: toastId })

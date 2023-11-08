@@ -1,44 +1,80 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
-import AssignmentsTitle from "../../layouts/assignmentsTitle/assignmentsTitle";
-import { useState } from "react";
-import AssignmentsContainer from "../../layouts/assignmentsContainer/AssignmentsContainer";
+import { Typography } from "@material-tailwind/react";
 import NoDataFound from "../../components/NoDataFound";
 
 const MyAssignment = () => {
-    const [filterValue, setFilterValue] = useState('');
-    const [sortValue, setSortValue] = useState('');
-
     const axios = useAxios();
-
     const { user } = useAuth();
 
-    let url = `/assignments?email=${user.email}`;
-    if (filterValue && sortValue) {
-        url = `/assignments?email=${user.email}&level=${filterValue}&sort=mark&sortOrder=${sortValue}`;
+    const getSubmitdAssignments = async () => {
+        const res = await axios.get(`/submited/assignments?email=${user.email}&submiterEmail=${user.email}`);
+        return res.data;
     }
-    else if (sortValue) {
-        url = `/assignments?email=${user.email}?sort=mark&sortOrder=${sortValue}`;
-    }
-    else if (filterValue) {
-        url = `/assignments?email=${user.email}&level=${filterValue}`;
-    }
-    const getAssignments = async () => {
-        const res = await axios.get(url);
-        return res;
-    }
-    const queryKey = ['assignments', sortValue, filterValue];
-    const query = useQuery({ queryKey, queryFn: getAssignments });
-    
+    const { data } = useQuery({ queryKey: ['submitedAssignments'], queryFn: getSubmitdAssignments });
+
     return (
         <div>
-            <div className="bg-[#f7f8f9]">
-                <AssignmentsTitle setFilterValue={setFilterValue} setSortValue={setSortValue} title='My Assignments' />
-                {query?.data?.data?.assignments?.length >0 ?
-                    <AssignmentsContainer page="delete" query={query} />
-                    : <NoDataFound />
-                }
+            <div className="container">
+                {data?.length > 0 ?
+                    <div className="overflow-x-scroll md:overflow-hidden">
+                        <table className="w-full min-w-max table-auto text-left z-0">
+                            <thead>
+                                <tr>
+                                    <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >
+                                        <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70"> Title </Typography>
+                                    </th>
+                                    <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >
+                                        <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70"> Mark </Typography>
+                                    </th>
+                                    <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >
+                                        <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70"> Marks awarded </Typography>
+                                    </th>
+                                    <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 text-center" >
+                                        <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70"> Staus </Typography>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {data?.map(submitedAssignment => {
+                                    return (
+                                        <tr key={submitedAssignment._id}>
+                                            <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
+                                                <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                    {
+                                                        submitedAssignment.title
+                                                    }
+                                                </Typography>
+                                            </td>
+                                            <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
+                                                <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                    {
+                                                        submitedAssignment.mark
+                                                    }
+                                                </Typography>
+                                            </td>
+                                            <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
+                                                <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                    {
+                                                        submitedAssignment.givenMark ? `${submitedAssignment.givenMark} out of ${submitedAssignment.mark}` : 'Processing...'
+                                                    }
+                                                </Typography>
+                                            </td>
+                                            <td className='p-4 border-b border-blue-gray-50 w-1/4 text-center'>
+                                                <Typography variant="small" color="blue-gray" className="font-normal" >
+                                                    {
+                                                        submitedAssignment.status
+                                                    }
+                                                </Typography>
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
+                    : <NoDataFound />}
             </div>
         </div>
     );

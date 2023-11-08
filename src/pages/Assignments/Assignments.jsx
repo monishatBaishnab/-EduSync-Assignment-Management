@@ -36,7 +36,7 @@ const Assignments = () => {
     return (
         <div className="bg-[#f7f8f9]">
             <AssignmentsTitle setFilterValue={setFilterValue} setSortValue={setSortValue} title='All Assignments' />
-            <AssignmentsContainer page='assignment' query={query} />
+            <AssignmentsContainer query={query} />
             <Pagination count={count} setPage={setPage} offset={offset} />
         </div>
     );

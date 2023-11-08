@@ -17,7 +17,7 @@ const AssignmentDetails = () => {
 
     const handleOpen = () => setOpen(!open);
 
-    const handleResponse = async (e) => { 
+    const handleResponse = async (e) => {
         const toastId = toast.loading('Submiting assignment...');
         e.preventDefault();
         const form = e.target;
@@ -35,15 +35,16 @@ const AssignmentDetails = () => {
             submitedUser: user.email,
             givenMark: null,
             givenMarkUser: null,
+            feedback: null
         }
-        
+
         const res = await axios.post(`/submited/assignments?email=${user.email}`, submitedAssignment);
         const data = await res.data;
-        if(data.acknowledged){
-            toast.success('Submited success.', {id: toastId});
+        if (data.acknowledged) {
+            toast.success('Submited success.', { id: toastId });
             navigate('/submited');
-        }else{
-            toast.error('Inernal server error.', {id: toastId});
+        } else {
+            toast.error('Inernal server error.', { id: toastId });
         }
 
         handleOpen();
@@ -58,17 +59,17 @@ const AssignmentDetails = () => {
         <div className="bg-blue-gray-50">
             <div className="container">
                 <div className="max-w-screen-md bg-white px-5 pt-10 pb-5 mx-auto space-y-5 rounded-md">
-                    <Typography variant="h3" className="text-center font-medium">{title}</Typography>
+                    <Typography variant="h3" className="text-center font-medium">{title ? title : ''}</Typography>
                     <div className="w-full h-[400px] rounded overflow-hidden">
-                        <img className="w-full h-full object-cover" src={thumbnail} alt={title} />
+                        <img className="w-full h-full object-cover" src={thumbnail ? thumbnail : ''} alt={title} />
                     </div>
                     <div className="space-y-5">
-                        <Typography variant="paragraph" className="">{description}</Typography>
+                        <Typography variant="paragraph" className="">{description ? description : ''}</Typography>
                         <div>
-                            <Typography variant="h6" className="font-medium">Due Date: {dueDate}</Typography>
-                            <Typography variant="h6" className="font-medium">Mark: {mark}</Typography>
-                            <Typography variant="h6" className="font-medium">Level: {level}</Typography>
-                            <Typography variant="h6" className="font-medium">Creator: {auth?.email}</Typography>
+                            <Typography variant="h6" className="font-medium">Due Date: {dueDate ? dueDate : ''}</Typography>
+                            <Typography variant="h6" className="font-medium">Mark: {mark ? mark : ''}</Typography>
+                            <Typography variant="h6" className="font-medium">Level: {level ? level : ''}</Typography>
+                            <Typography variant="h6" className="font-medium">Creator: {auth?.email ? auth?.email : ''}</Typography>
                         </div>
                         <Button onClick={() => setOpen(true)} className="capitalize w-full font-medium text-base py-2" color="blue">Take Assignment</Button>
                     </div>
@@ -86,7 +87,7 @@ const AssignmentDetails = () => {
                                 <Input required name="pdf" placeholder="Assignment PDF URL" id="pdf" className=" !border-t-blue-gray-200 focus:!border-t-gray-900" labelProps={{ className: "before:content-none after:content-none", }} />
                             </div>
                             <div>
-                                <Typography as='label' htmlFor='note' className="mb-2">Assignment Node</Typography>
+                                <Typography as='label' htmlFor='note' className="mb-2">Assignment Note</Typography>
                                 <Textarea required name="note" placeholder="Assignment note" id="note" className=" !border-t-blue-gray-200 focus:!border-t-gray-900" labelProps={{ className: "before:content-none after:content-none", }} />
                             </div>
                             <Button type="submit" className="capitalize font-medium py-2 text-base">Subbmit Response</Button>

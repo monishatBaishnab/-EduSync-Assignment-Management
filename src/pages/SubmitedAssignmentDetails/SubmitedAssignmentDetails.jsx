@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
-import { Button, Dialog, DialogBody, DialogHeader, Input, Typography } from "@material-tailwind/react";
+import { Button, Dialog, DialogBody, DialogHeader, Input, Textarea, Typography } from "@material-tailwind/react";
 import toast from "react-hot-toast";
 
 const SubmitedAssignmentDetails = () => {
@@ -21,10 +21,12 @@ const SubmitedAssignmentDetails = () => {
     const handleResponse = async (e) => {
         e.preventDefault();
         const givenMark = e.target.mark.value;
+        const feedback = e.target.mark.feedback;
         const toastId = toast.loading('Giving Mark...');
         const givenMarkObj = {
             status: 'complate',
             givenMark,
+            feedback,
             givenMarkUser: user.email
         }
         if (givenMark <= mark) {
@@ -62,15 +64,15 @@ const SubmitedAssignmentDetails = () => {
         <div>
             <div className="container">
                 <div className="max-w-screen-md bg-white px-5 pt-10 pb-5 mx-auto space-y-5 rounded-md">
-                    <Typography variant="h3" className="text-center font-medium">{title}</Typography>
+                    <Typography variant="h3" className="text-center font-medium">{title ? title : ''}</Typography>
                     <div className="space-y-5">
-                        <Typography variant="paragraph" className="">Submited Note: {note}</Typography>
-                        <Typography variant="paragraph" className="">Submited PDF: {pdf}</Typography>
+                        <Typography variant="paragraph" className="">Submited Note: {note ? note : ''}</Typography>
+                        <Typography variant="paragraph" className="">Submited PDF: {pdf ? pdf : ''}</Typography>
                         <div>
-                            <Typography variant="h6" className="font-medium">Due Date: {submitedDate}</Typography>
-                            <Typography variant="h6" className="font-medium">Mark: {mark}</Typography>
-                            <Typography variant="h6" className="font-medium capitalize">Level: {level}</Typography>
-                            <Typography variant="h6" className="font-medium">Creator: {submitedUser}</Typography>
+                            <Typography variant="h6" className="font-medium">Due Date: {submitedDate ? submitedDate : ''}</Typography>
+                            <Typography variant="h6" className="font-medium">Mark: {mark ? mark : ''}</Typography>
+                            <Typography variant="h6" className="font-medium capitalize">Level: {level ? level : ''}</Typography>
+                            <Typography variant="h6" className="font-medium">Creator: {submitedUser ? submitedUser : ''}</Typography>
                         </div>
                         <Button onClick={() => setOpen(true)} className="capitalize font-medium text-base py-2" color="blue">Give Mark</Button>
                     </div>
@@ -86,6 +88,10 @@ const SubmitedAssignmentDetails = () => {
                             <div>
                                 <Typography as='label' htmlFor='mark' className="mb-2">Mark</Typography>
                                 <Input required name="mark" placeholder="Assignment Mark" id="mark" className=" !border-t-blue-gray-200 focus:!border-t-gray-900" labelProps={{ className: "before:content-none after:content-none", }} />
+                            </div>
+                            <div>
+                                <Typography as='label' htmlFor='feedback' className="mb-2">Feedback</Typography>
+                                <Textarea required name="feedback" placeholder="feedback" id="feedback" className=" !border-t-blue-gray-200 focus:!border-t-gray-900" labelProps={{ className: "before:content-none after:content-none", }} />
                             </div>
                             <Button type="submit" className="capitalize font-medium py-2 text-base">Give</Button>
                         </div>

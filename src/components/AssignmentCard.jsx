@@ -7,7 +7,7 @@ import useAxios from "../hooks/useAxios";
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 
-const AssignmentCard = ({ assignment, refetch, page }) => {
+const AssignmentCard = ({ assignment, refetch}) => {
     const { _id, title, thumbnail, mark, level, user: auth } = assignment || {};
     const { user } = useAuth();
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ const AssignmentCard = ({ assignment, refetch, page }) => {
                     refetch();
                 }
             } catch (error) {
-                toast.error('Unauthorized access.', {id: toastId});
+                toast.error('Unauthorized access.', { id: toastId });
             }
         } catch (error) {
             if (error) {
@@ -47,11 +47,7 @@ const AssignmentCard = ({ assignment, refetch, page }) => {
                 <div className="flex items-center gap-2">
                     <IconButton onClick={() => navigate(`/details/${_id}`)} className="w-full shadow-none hover:shadow-none text-lg" color="light-blue"><AiOutlineEye /></IconButton>
                     <IconButton onClick={() => navigate(`/update/${_id}`)} className="w-full shadow-none hover:shadow-none text-lg" color="green"><BsPencilSquare /></IconButton>
-
-                    {
-                        page === 'delete' &&
-                        <IconButton onClick={handleDelete} className="w-full shadow-none hover:shadow-none text-lg" color="red"><BsFillTrash3Fill /></IconButton>
-                    }
+                    <IconButton onClick={handleDelete} className="w-full shadow-none hover:shadow-none text-lg" color="red"><BsFillTrash3Fill /></IconButton>
                 </div>
             </div>
         </div>
@@ -60,7 +56,6 @@ const AssignmentCard = ({ assignment, refetch, page }) => {
 
 AssignmentCard.propTypes = {
     assignment: PropTypes.object,
-    page: PropTypes.string,
     refetch: PropTypes.func,
 }
 
