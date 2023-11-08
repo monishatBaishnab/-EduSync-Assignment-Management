@@ -13,15 +13,15 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <SkeletonTheme baseColor="#82828233" highlightColor="#82828233">
-      <ThemeProvider>
-        <AuthContext>
+    <AuthContext>
+      <SkeletonTheme baseColor="#82828233" highlightColor="#82828233">
+        <ThemeProvider>
           <QueryClientProvider client={queryClient}>
             <RouterProvider router={Routes} />
           </QueryClientProvider>
-        </AuthContext>
-      </ThemeProvider>
-    </SkeletonTheme>
+        </ThemeProvider>
+      </SkeletonTheme>
+    </AuthContext>
     <Toaster />
-  </React.StrictMode>,
+  </React.StrictMode >,
 )
