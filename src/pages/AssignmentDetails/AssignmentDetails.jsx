@@ -15,6 +15,10 @@ const AssignmentDetails = () => {
 
     const { _id, title, thumbnail, mark, description, level, dueDate, user: auth } = assignment || {};
 
+    const lastData = new Date(dueDate);
+    const todayDate = new Date();
+
+
     const handleOpen = () => setOpen(!open);
 
     const handleResponse = async (e) => {
@@ -23,6 +27,7 @@ const AssignmentDetails = () => {
         const form = e.target;
         const pdf = form.pdf.value;
         const note = form.note.value;
+
         const submitedAssignment = {
             asssignmentId: _id,
             title,
@@ -71,7 +76,11 @@ const AssignmentDetails = () => {
                             <Typography variant="h6" className="font-medium">Level: {level ? level : ''}</Typography>
                             <Typography variant="h6" className="font-medium">Creator: {auth?.email ? auth?.email : ''}</Typography>
                         </div>
-                        <Button onClick={() => setOpen(true)} className="capitalize w-full font-medium text-base py-2" color="blue">Take Assignment</Button>
+                        {
+                            lastData >= todayDate ?
+                                <Button onClick={() => setOpen(true)} className="capitalize w-full font-medium text-base py-2" color="blue">Take Assignment</Button> :
+                                <Button onClick={() => setOpen(true)} className="capitalize w-full font-medium text-base py-2" color="blue" disabled>Deadline Finished</Button>
+                        }
                     </div>
                 </div>
             </div>

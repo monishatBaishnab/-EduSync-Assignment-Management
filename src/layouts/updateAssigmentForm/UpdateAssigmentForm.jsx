@@ -33,7 +33,7 @@ const UpdateAssignmentForm = ({ title, description, assignment = {} }) => {
     // Initialize the date to oldDueDate if available, or the current date
     useEffect(() => {
         setStartDate(new Date(oldDueDate ? oldDueDate : date));
-    }, [oldDueDate, date])
+    }, [oldDueDate])
 
     // Set the level from oldLevel
     useEffect(() => {
@@ -131,7 +131,7 @@ const UpdateAssignmentForm = ({ title, description, assignment = {} }) => {
                     </div>
                     <div className="flex items-center gap-5">
                         <Button type="submit" className="capitalize shadow-none hover:shadow-none" color="light-blue">Update</Button>
-                        <Button onClick={() => navigate('/')} type="button" className="capitalize shadow-none hover:shadow-none" color="red">Cancel</Button>
+                        <Button onClick={() => navigate('/assignments')} type="button" className="capitalize shadow-none hover:shadow-none" color="red">Cancel</Button>
                     </div>
                 </form>
             </div>

@@ -4,6 +4,15 @@ import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import { Button, Dialog, DialogBody, DialogHeader, Input, Textarea, Typography } from "@material-tailwind/react";
 import toast from "react-hot-toast";
+import PdfView from "../../layouts/PDF_VIEW/Pdf-view";
+import { pdfjs } from 'react-pdf';
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    'pdfjs-dist/build/pdf.worker.min.js',
+    import.meta.url,
+).toString();
+
+
 
 const SubmitedAssignmentDetails = () => {
     const { id } = useParams();
@@ -11,11 +20,13 @@ const SubmitedAssignmentDetails = () => {
     const { user } = useAuth();
     const [submitedAssignment, setSubmiteAssignment] = useState({});
     const [open, setOpen] = useState(false);
+    const [pdfOpen, setPdfOpen] = useState(false);
     const navigate = useNavigate();
 
     const { _id, title, mark, submitedDate, level, pdf, note, submitedUser } = submitedAssignment;
 
     const handleOpen = () => setOpen(!open);
+    const handlePdfOpen = () => setPdfOpen(!pdfOpen);
 
 
     const handleResponse = async (e) => {
@@ -67,7 +78,7 @@ const SubmitedAssignmentDetails = () => {
                     <Typography variant="h3" className="text-center font-medium">{title ? title : ''}</Typography>
                     <div className="space-y-5">
                         <Typography variant="paragraph" className="">Submited Note: {note ? note : ''}</Typography>
-                        <Typography variant="paragraph" className="">Submited PDF: {pdf ? pdf : ''}</Typography>
+                        <Typography variant="paragraph" className="">Submited PDF: <Typography as='span' onClick={(handlePdfOpen)} className="cursor-pointer text-light-orange inline-block">{pdf ? pdf.slice(5) : ''}</Typography></Typography>
                         <div>
                             <Typography variant="h6" className="font-medium">Due Date: {submitedDate ? submitedDate : ''}</Typography>
                             <Typography variant="h6" className="font-medium">Mark: {mark ? mark : ''}</Typography>
@@ -96,6 +107,11 @@ const SubmitedAssignmentDetails = () => {
                             <Button type="submit" className="capitalize font-medium py-2 text-base">Give</Button>
                         </div>
                     </form>
+                </DialogBody>
+            </Dialog>
+            <Dialog open={pdfOpen} handler={handlePdfOpen}>
+                <DialogBody className="h-[calc(100vh_-_50px)] overflow-y-scroll overflow-x-hidden">
+                    <PdfView pdfUrl={pdf} />
                 </DialogBody>
             </Dialog>
         </div>

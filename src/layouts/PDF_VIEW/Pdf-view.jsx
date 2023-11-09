@@ -1,34 +1,63 @@
 import { useState } from 'react';
 import { Document, Page } from 'react-pdf';
-import notice from '../../assets/notice.pdf';
+import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
+import { IconButton } from '@material-tailwind/react';
+import PropTypes from 'prop-types';
 
-function PdfView() {
-  const [numPages, setNumPages] = useState();
+function PdfView({pdfUrl}) {
+  
+
+  const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
+    setPageNumber(1);
   }
 
+  function changePage(offSet) {
+    setPageNumber(prevPageNumber => prevPageNumber + offSet);
+  }
+
+  function changePageBack() {
+    changePage(-1)
+  }
+
+  function changePageNext() {
+    changePage(+1)
+  }
+
+
   return (
-    <div>
-      {/* <Document file='https://drive.google.com/file/d/16r983EH31VaZwWr79I9ppmAvUuoQGW29/view?usp=sharing' onLoadSuccess={onDocumentLoadSuccess}>
-        <Page pageNumber={pageNumber} renderAnnotationLayer={false} renderTextLayer={false} />
-          
-      </Document> */}
-      <Document
-        file={'https://blush-eleen-56.tiiny.site/'}
-        onLoadSuccess={onDocumentLoadSuccess}
-      >
-        {Array.apply(null, Array(numPages))
-          .map((x, i) => i + 1)
-          .map((page, idx) => <Page key={idx} className='my-5' pageNumber={page} />)}
-      </Document>
-      <p>
-        Page {pageNumber} of {numPages}
-      </p>
+    <div className="App">
+      <header className="App-header">
+        <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
+          <Page
+            renderTextLayer={false}
+            renderAnnotationLayer={false}
+            pageNumber={pageNumber}
+          />
+        </Document>
+        <p className='text-center my-5'> Page {pageNumber} of {numPages}</p>
+        <div className='flex items-center gap-2 justify-center'>
+          {pageNumber > 1 ?
+            <IconButton onClick={changePageBack}><BsArrowLeft /></IconButton> 
+            :
+            <IconButton onClick={changePageBack} disabled><BsArrowLeft /></IconButton> 
+          }
+          {
+            pageNumber < numPages ?
+            <IconButton onClick={changePageNext}><BsArrowRight /></IconButton>:
+            <IconButton onClick={changePageNext} disabled><BsArrowRight /></IconButton>
+          }
+        </div>
+      </header>
     </div>
   );
+}
+
+PdfView.propTypes = {
+  pdfUrl: PropTypes.string,
 }
 
 export default PdfView;

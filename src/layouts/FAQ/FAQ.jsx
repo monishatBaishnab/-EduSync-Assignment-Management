@@ -2,13 +2,19 @@ import { Accordion, AccordionBody, AccordionHeader, Typography } from "@material
 import { useState } from "react";
 import book from '../../assets/book.png';
 import Tilt from 'react-parallax-tilt';
+import { motion } from 'framer-motion';
 
 
 const FrequentlyAskQuestions = () => {
     const [open, setOpen] = useState(1);
     const handleOpen = value => setOpen(value);
     return (
-        <div className="bg-faq">
+        <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: .15 }}
+            className="bg-faq">
             <div className="bg-[#F1F2F4]/80">
                 <div className="container lg:py-28">
                     <div className="grid gap-5 grid-cols-1 md:grid-cols-2 items-center">
@@ -50,7 +56,7 @@ const FrequentlyAskQuestions = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -36,7 +36,6 @@ const AuthContext = ({ children }) => {
         // Effect to listen for changes in authentication state.
         const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
             setUser(currentUser);
-            console.log(currentUser);
             setLoading(false);
             if (currentUser) {
                 try {
@@ -46,9 +45,7 @@ const AuthContext = ({ children }) => {
                 }
             } else {
                 try {
-                    const res = await axios.post('/logout');
-                    const data = await res.data;
-                    console.log(data);
+                    await axios.post('/logout');
                 } catch (error) {
                     console.log(error);
                 }
