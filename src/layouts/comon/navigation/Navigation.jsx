@@ -12,7 +12,6 @@ import useAuth from "../../../hooks/useAuth";
 const Navigation = () => {
     const [open, setOpen] = useState(false);
     const { user } = useAuth();
-    console.log(user);
 
     useEffect(() => {
         window.addEventListener('resize', () => {

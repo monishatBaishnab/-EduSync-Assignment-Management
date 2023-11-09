@@ -1,6 +1,6 @@
 
 ## EduSync
-[Live link](https://edusync-7a3f5.firebaseapp.com/)
+[Live link](https://edusync-7a3f5.web.app/)
 
 It is an online study website where users can create, answer and mark assignments. The created assignment can be edited or deleted later, besides there is a system to view the answers provided by yourself.
 

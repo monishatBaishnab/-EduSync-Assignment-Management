@@ -14,7 +14,7 @@
     ],
     "headers": [
       {
-        "source": "https://sgpiderai.com/pdf/**",
+        "source": "/pdf/**",
         "headers": [
           {
             "key": "Access-Control-Allow-Origin",

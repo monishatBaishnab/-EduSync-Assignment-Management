@@ -71,8 +71,6 @@ const AuthContext = ({ children }) => {
         loading
     }
 
-    console.log(user);
-
     // Provide authentication context to child components.
     return (
         <UserContext.Provider value={AuthInfo}>

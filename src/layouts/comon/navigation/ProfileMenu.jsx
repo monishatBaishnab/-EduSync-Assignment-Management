@@ -20,14 +20,14 @@ function ProfileMenu() {
                 </Button>
             </MenuHandler>
             <MenuList className="p-1">
-                <MenuItem onClick={closeMenu} className={`flex items-center gap-2 rounded`} >
-                    <Typography as="span" variant="small" className="font-normal flex items-center gap-2">
-                        <FaRegUserCircle className="text-lg" /> Profile
+                <MenuItem onClick={closeMenu} className={`flex items-center gap-2 rounded justify-center`} >
+                    <Typography as="span" variant="small" className="font-normal flex items-center justify-center gap-2">
+                        <FaRegUserCircle className="text-lg" /> {user.displayName}
                     </Typography>
                 </MenuItem>
 
-                <MenuItem onClick={handleSignOut} className={`flex items-center gap-2 rounded hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10`} >
-                    <Typography color="red" as="span" variant="small" className="font-normal flex items-center gap-2">
+                <MenuItem onClick={handleSignOut} className={`flex items-center gap-2 justify-center rounded hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10`} >
+                    <Typography color="red" as="span" variant="small" className="font-normal flex items-center justify-center gap-2">
                         <FaPowerOff className="text-lg" /> Sign out
                     </Typography>
                 </MenuItem>
