@@ -7,10 +7,12 @@ import { BsGithub } from "react-icons/bs";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import PropTypes from 'prop-types';
+import useAxios from "../../hooks/useAxios";
 
 const SignInForm = ({state}) => {
     const { signInWithEmailPass, signInWithGoogle, signInWitGithub } = useAuth();
     const navigate = useNavigate();
+    const axios = useAxios();
 
     const handleSignIn = async (e) => {
         e.preventDefault();
@@ -20,7 +22,20 @@ const SignInForm = ({state}) => {
         const toastId = toast.loading('Signining user...');
 
         try {
-            await signInWithEmailPass(email, password);
+            const user = await signInWithEmailPass(email, password);
+            if (user) {
+                try {
+                    await axios.post('/token', { email: user?.email });
+                } catch (error) {
+                    console.log(error);
+                }
+            }else {
+                try {
+                    await axios.post('/logout');
+                } catch (error) {
+                    console.log(error);
+                }
+            }
             toast.success('Sign-in success.', { id: toastId });
             if(state){
                 navigate(state);
@@ -36,7 +51,20 @@ const SignInForm = ({state}) => {
     const handleGoogleSignin = async () => {
         const toastId = toast.loading('Signining user...');
         try {
-            await signInWithGoogle();
+            const user = await signInWithGoogle();
+            if (user) {
+                try {
+                    await axios.post('/token', { email: user?.email });
+                } catch (error) {
+                    console.log(error);
+                }
+            }else {
+                try {
+                    await axios.post('/logout');
+                } catch (error) {
+                    console.log(error);
+                }
+            }
             toast.success('Sign-in success.', { id: toastId });
             if(state){
                 navigate(state);
@@ -52,7 +80,20 @@ const SignInForm = ({state}) => {
     const handleGithubSignin = async() => {
         const toastId = toast.loading('Signining user...');
         try {
-            await signInWitGithub();
+            const user = await signInWitGithub();
+            if (user) {
+                try {
+                    await axios.post('/token', { email: user?.email });
+                } catch (error) {
+                    console.log(error);
+                }
+            }else {
+                try {
+                    await axios.post('/logout');
+                } catch (error) {
+                    console.log(error);
+                }
+            }
             toast.success('Sign-in success.', { id: toastId });
             if(state){
                 navigate(state);

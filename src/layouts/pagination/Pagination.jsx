@@ -29,8 +29,6 @@ const Pagination = ({ setPage, offset, count = 1 }) => {
         setActive(active - 1);
     };
 
-
-
     return (
         <div className="container">
             <div className="flex justify-center items-center gap-4">

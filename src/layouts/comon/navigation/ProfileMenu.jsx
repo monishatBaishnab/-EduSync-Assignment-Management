@@ -3,13 +3,21 @@ import { useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaPowerOff } from "react-icons/fa6";
 import useAuth from "../../../hooks/useAuth";
+import useAxios from "../../../hooks/useAxios";
 
 function ProfileMenu() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const closeMenu = () => setIsMenuOpen(false);
     const { user, signOutUser } = useAuth();
+    const axios = useAxios();
+    
     const handleSignOut = async () => {
         await signOutUser();
+        try {
+            await axios.post('/logout');
+        } catch (error) {
+            console.log(error);
+        }
         closeMenu();
     }
     return (

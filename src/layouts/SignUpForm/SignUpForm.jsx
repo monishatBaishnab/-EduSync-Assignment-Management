@@ -6,10 +6,12 @@ import { BiImageAlt } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import useAxios from "../../hooks/useAxios";
 
 const SignUpForm = () => {
     const { signUpWithEmailPass, updateUser } = useAuth();
     const navigate = useNavigate();
+    const axios = useAxios();
 
     const handleSingUp = async(e) => {
         e.preventDefault();
@@ -26,8 +28,21 @@ const SignUpForm = () => {
             if (password.length >= 6 && cpassword.length >= 6) {
                 if (password === cpassword) {
                     try {
-                        await signUpWithEmailPass(email, password);
+                        const user = await signUpWithEmailPass(email, password);
                         await updateUser(name, photo);
+                        if (user) {
+                            try {
+                                await axios.post('/token', { email: user?.email });
+                            } catch (error) {
+                                console.log(error);
+                            }
+                        }else {
+                            try {
+                                await axios.post('/logout');
+                            } catch (error) {
+                                console.log(error);
+                            }
+                        }
                         toast.success('User account created.', {id: toastId});
                         navigate('/');
                     } catch (err) {

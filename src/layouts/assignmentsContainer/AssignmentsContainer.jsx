@@ -15,7 +15,7 @@ const AssignmentsContainer = ({ query = {}}) => {
                         isLoading ? <LoadingAssignmentCard /> :
                             assignments?.data?.assignments?.map(assignment => <AssignmentCard refetch={refetch} assignment={assignment} key={assignment._id} />)
                     }
-                </div>
+            </div>
             </div>
         </div>
     );
