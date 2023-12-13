@@ -4,6 +4,17 @@ Live link: [EduSync](https://edusync-7a3f5.web.app/).
 
 EduSync is a cutting-edge online study platform, meticulously designed to enhance the online learning experience for users through its dynamic assignment management system. With a live link providing instant access, EduSync offers a comprehensive set of features that empower users to create, answer, and evaluate assignments seamlessly.
 
+*Unique Features:*
+
+**Thumbnail Image Integration:**
+   - Enhance posts with a thumbnail image feature, allowing users to include assignment-related visuals upon publication. This visual enhancement ensures a more comprehensible understanding of the primary topic, leveraging the power of visual representation.
+
+**Engaging Loading Skeleton:**
+   - Implement an engaging loading skeleton that gracefully appears during the loading period, ensuring a captivating user experience while posts are being retrieved. This feature maintains user engagement and provides a seamless transition between loading phases.
+
+**Tag-based Post Filtering:**
+   - Display tags elegantly on the homepage and implement refined click events, enabling users to effortlessly filter posts based on their preferences. By clicking on specific tags, users can tailor their viewing experience and access content aligned with their interests.
+
 *Key Features:*
 
 **1. Assignment Management System:**
