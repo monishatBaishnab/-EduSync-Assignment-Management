@@ -6,14 +6,11 @@ EduSync is a cutting-edge online study platform, meticulously designed to enhanc
 
 *Unique Features:*
 
-**Thumbnail Image Integration:**
-   - Enhance posts with a thumbnail image feature, allowing users to include assignment-related visuals upon publication. This visual enhancement ensures a more comprehensible understanding of the primary topic, leveraging the power of visual representation.
+**Comprehensive User Dashboard:**
+- Strategically designed a dedicated section on the 'My Assignments' page, offering users a streamlined overview of submitted assignments, profile details, and a dynamic chart showcasing the last 7 days of submissions. The intuitive line chart visually represents daily submission frequencies, complemented by a sophisticated badge system recognizing user achievements with bronze, silver, or gold badges based on submission milestones.
 
-**Engaging Loading Skeleton:**
-   - Implement an engaging loading skeleton that gracefully appears during the loading period, ensuring a captivating user experience while posts are being retrieved. This feature maintains user engagement and provides a seamless transition between loading phases.
-
-**Tag-based Post Filtering:**
-   - Display tags elegantly on the homepage and implement refined click events, enabling users to effortlessly filter posts based on their preferences. By clicking on specific tags, users can tailor their viewing experience and access content aligned with their interests.
+**Efficient Assignment Management:**
+- Implemented a refined table layout on the 'Submitted Assignments' page, seamlessly integrating completed assignments alongside pending ones. Introduced a tabbed navigation system for easy toggling between pending and completed assignments. This system not only provides comprehensive assignment details but also incorporates mark provider information, enabling users to effortlessly determine the marks earned for each assignment.
 
 *Key Features:*
 
