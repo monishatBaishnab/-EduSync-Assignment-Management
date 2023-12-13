@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
 import { Typography } from "@material-tailwind/react";
 import NoDataFound from "../../components/NoDataFound";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import { useState } from "react";
 import bronze from '../../assets/badge/Bronze.png';
 import silver from '../../assets/badge/Silver.png';
@@ -58,13 +58,16 @@ const MyAssignment = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <LineChart width={600} height={300} data={count}>
-                            <Line type="monotone" dataKey="count" stroke="#8884d8" />
-                            <CartesianGrid stroke="#ccc" />
-                            <XAxis dataKey="date" />
-                            <YAxis />
-                        </LineChart>
+                    <div className="overflow-x-auto">
+                        <ResponsiveContainer width="100%" height={300}>
+                            <LineChart width={600} height={300} data={count}>
+                                <Line type="monotone" dataKey="count" stroke="#8884d8" />
+                                <CartesianGrid stroke="#ccc" />
+                                <XAxis dataKey="date" />
+                                <YAxis />
+                                <Tooltip />
+                            </LineChart>
+                        </ResponsiveContainer>
                         <Typography variant="h5" color="blue" className="text-center">Submission Status</Typography>
                     </div>
                 </div>

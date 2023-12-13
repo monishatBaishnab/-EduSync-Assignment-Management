@@ -1,6 +1,6 @@
 **EduSync: Revolutionizing Online Learning with Seamless Assignment Management**
 
-Live link: [TechStore](https://edusync-7a3f5.web.app/).
+Live link: [EduSync](https://edusync-7a3f5.web.app/).
 
 EduSync is a cutting-edge online study platform, meticulously designed to enhance the online learning experience for users through its dynamic assignment management system. With a live link providing instant access, EduSync offers a comprehensive set of features that empower users to create, answer, and evaluate assignments seamlessly.
 
