@@ -1,13 +1,13 @@
 import Features from "../components/Home/Features/Features";
 import Header from "../components/Home/Header/Header";
-import FrequentlyAskQuestions from "../layouts/FAQ/FAQ";
+import QuickQuerries from "../components/Home/QuickQuerries/QuickQuerries";
 
 const Home = () => {
     return (
         <>
             <Header />
             <Features />
-            <FrequentlyAskQuestions />
+            <QuickQuerries />
         </>
     );
 };
