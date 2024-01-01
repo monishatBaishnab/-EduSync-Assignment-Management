@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Error from "../pages/Error/Error";
-import Home from "../pages/Home/Home";
+import Home from "../pages/Home";
 import AssignmentDetails from "../pages/AssignmentDetails/AssignmentDetails";
 import CreateAssignment from "../pages/CreateAssignment/CreateAssignment";
 import UpdateAssignment from "../pages/UpdateAssignment/UpdateAssignment";
