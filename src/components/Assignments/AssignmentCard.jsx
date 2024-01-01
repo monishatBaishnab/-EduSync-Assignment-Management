@@ -16,7 +16,7 @@ const AssignmentCard = ({ assignment }) => {
             whileHover={{ translateY: -4 }}
             transition={{ type: 'spring' }}
             className="p-5 border-[1.5px] rounded-md bg-white transition-[border] duration-300 hover:border-gray-400 cursor-pointer">
-            <div className="w-full h-[180px] overflow-hidden rounded">
+            <div className="w-full overflow-hidden rounded">
                 <img src={thumbnail} alt={title} className="w-full h-full object-cover" />
             </div>
             <div className="space-y-4 mt-3">
