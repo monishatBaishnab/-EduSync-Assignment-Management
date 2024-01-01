@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "../../hooks/useAxios";
-import AssignmentsContainer from "../../layouts/assignmentsContainer/AssignmentsContainer";
-import AssignmentsTitle from "../../layouts/assignmentsTitle/assignmentsTitle";
-import Pagination from "../../layouts/pagination/Pagination";
 import { useState } from "react";
+import useAxios from "../hooks/useAxios";
+import AssignmentsContainer from "../components/Assignments/AssignmentsContainer";
+import AssignmentsTitle from "../components/Assignments/AssignmentsTitle";
+import Pagination from "../components/Assignments/Pagination";
 
 
 const Assignments = () => {

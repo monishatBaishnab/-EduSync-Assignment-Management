@@ -1,6 +1,7 @@
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
-const LoadingAssignmentCard = () => {
+
+const SkeletonLoader = () => {
     const arr = [...Array(4).keys()];
     return (
         arr.map((id) => <div key={id} className="p-5 border bg-white md:flex md:items-center md:gap-5">
@@ -21,4 +22,4 @@ const LoadingAssignmentCard = () => {
     );
 };
 
-export default LoadingAssignmentCard;
+export default SkeletonLoader;

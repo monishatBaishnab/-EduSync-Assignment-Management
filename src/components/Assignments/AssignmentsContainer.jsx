@@ -1,7 +1,6 @@
-
 import PropTypes from 'prop-types'
-import LoadingAssignmentCard from '../../components/LoadingAssignmentCard';
 import AssignmentCard from '../../components/AssignmentCard';
+import SkeletonLoader from './SkeletonLoader';
 
 const AssignmentsContainer = ({ query = {}}) => {
 
@@ -12,7 +11,7 @@ const AssignmentsContainer = ({ query = {}}) => {
             <div className="container">
                 <div className="grid gap-5 grid-cols-1 sm:grid-cols-2">
                     {
-                        isLoading ? <LoadingAssignmentCard /> :
+                        isLoading ? <SkeletonLoader /> :
                             assignments?.data?.assignments?.map(assignment => <AssignmentCard refetch={refetch} assignment={assignment} key={assignment._id} />)
                     }
             </div>

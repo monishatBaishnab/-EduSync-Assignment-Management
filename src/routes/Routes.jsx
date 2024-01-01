@@ -9,7 +9,7 @@ import MyAssignment from "../pages/MyAssignment/MyAssignment";
 import SubmitedAssignment from "../pages/SubmitedAssignment/SubmitedAssignment";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
-import Assignments from "../pages/Assignments/Assignments";
+import Assignments from "../pages/Assignments";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import SubmitedAssignmentDetails from "../pages/SubmitedAssignmentDetails/SubmitedAssignmentDetails";
 
