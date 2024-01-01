@@ -13,15 +13,13 @@ const Header = () => {
                         <div className="text-dark-gray space-y-5">
                             <Typography variant="h2">{`Welcome to "EduSync" - Where Learning Thrives Through Collaboration!`}</Typography>
                             <Typography as='p' className="font-normal">EduSync is your online destination for collaborative learning. Join forces with peers, access shared study resources, and enhance your educational journey together. Empower your studies with the strength of community and knowledge-sharing.</Typography>
-                            <div>
-                                <Link to='/assignments'>
-                                    <Button className="rounded-full flex items-center gap-2 font-normal">Explore Assignments <BsArrowRight className="text-lg" /></Button>
-                                </Link>
-                            </div>
+                            <Link to='/assignments' className="inline-block">
+                                <Button className="rounded-full flex items-center gap-2 font-normal">Explore Assignments <BsArrowRight className="text-lg" /></Button>
+                            </Link>
                         </div>
                         <Tilt scale={1.1} transitionSpeed={2500}>
                             <div className="flex items-center justify-center h-[500px] w-full overflow-hidden">
-                                <img className="object-contain w-full h-full" src={hero_frame} alt="" />
+                                <img className="object-contain w-full h-full" src={hero_frame} alt={hero_frame} />
                             </div>
                         </Tilt>
                     </div>
