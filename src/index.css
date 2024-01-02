@@ -18,3 +18,19 @@
 *{
     font-family: 'DM Mono', monospace !important;
 }
+
+#filter-option::-webkit-scrollbar {
+    width: 4px; /* width of the scrollbar */
+    height: 8px;
+  }
+  
+  #filter-option::-webkit-scrollbar-thumb {
+    background-color: rgb(20 44 68); /* color of the thumb */
+    border-radius: 2px; /* rounded corners of the thumb */
+  }
+  
+  #filter-option::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* color of the track */
+    height: 2px;
+  }
+  
