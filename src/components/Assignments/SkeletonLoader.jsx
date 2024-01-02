@@ -2,7 +2,7 @@ import { Typography } from "@material-tailwind/react";
 import 'react-loading-skeleton/dist/skeleton.css'
 
 const SkeletonLoader = () => {
-    const arr = [...Array(8).keys()];
+    const arr = [...Array(9).keys()];
     return (
         arr.map((id) => <div key={id} className="p-5 border bg-white rounded-md space-y-3">
             <div className="w-full h-[180px] overflow-hidden rounded">

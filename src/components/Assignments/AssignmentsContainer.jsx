@@ -10,7 +10,7 @@ import Pagination from './Pagination';
 const AssignmentsContainer = () => {
     // State for the current page and items per page
     const [page, setPage] = useState(1);
-    const offset = 10;
+    const offset = 9;
 
     // State for filtering and sorting assignments
     const [filterValue, setFilterValue] = useState('');

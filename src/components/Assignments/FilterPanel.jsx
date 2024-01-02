@@ -7,7 +7,7 @@ const FilterPanel = ({ states }) => {
     const { setFilterValue, setSortValue } = states || {};
 
     return (
-        <div>
+        <div className='bg-white p-5 border rounded'>
             <FilterOption title={"Filter by Level"} items={levelFilter} action={setFilterValue} />
             <FilterOption title={"Sort Assignments"} items={sortValue} action={setSortValue} />
         </div>

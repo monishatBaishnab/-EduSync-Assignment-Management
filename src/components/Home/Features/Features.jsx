@@ -8,25 +8,25 @@ const Features = () => {
         {
             id: 1,
             title: 'User-Friendly Collaboration',
-            desc: 'Facilitate seamless interaction and teamwork among users, providing them with tools to easily connect, discuss, and collaborate on various study-related activities.',
+            desc: 'Enhance teamwork and interaction with tools for seamless connection and collaboration on study-related activities.',
             icon: collaboration,
         },
         {
             id: 2,
             title: 'Resource Sharing',
-            desc: 'Enable users to share and access a wide range of educational materials, such as notes, documents, and study resources, promoting knowledge sharing and enhancing the learning experience.',
+            desc: 'Enable easy sharing and access to educational materials, promoting knowledge exchange for an improved learning experience.',
             icon: resource,
         },
         {
             id: 3,
             title: 'Assignment Marking',
-            desc: 'Incorporate a grading system that allows users to evaluate and provide feedback on assignments, ensuring a fair and efficient assessment process.',
+            desc: 'Implement a grading system for efficient assessment, allowing users to evaluate and provide feedback on assignments.',
             icon: marking,
         },
         {
             id: 4,
             title: 'Assignment Management',
-            desc: 'Provide users with a comprehensive system to organize and track assignments, deadlines, and project progress, streamlining their academic workload and improving task management.',
+            desc: 'Provide a comprehensive system for organizing assignments, deadlines, and project progress, streamlining academic workload and task management.',
             icon: managemen,
         },
     ];

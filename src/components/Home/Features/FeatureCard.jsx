@@ -9,7 +9,7 @@ const FeatureCard = ({ item }) => {
         <motion.div
             whileHover={{ translateY: -5 }}
             transition={{ type: 'spring'}}
-            className="space-y-4 border p-5 rounded bg-white hover:border-light-orange transition-[border] duration-300">
+            className="space-y-4 border-[1.5px] rounded-md bg-white transition-[border] duration-300 hover:border-gray-400 p-5 flex flex-col items-center text-center">
             <div className="w-28 h-28 p-2 flex items-center justify-center bg-light-orange/25 rounded-sm">
                 {icon}
             </div>
