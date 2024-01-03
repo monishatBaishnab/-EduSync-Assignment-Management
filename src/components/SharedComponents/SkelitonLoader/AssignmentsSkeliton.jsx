@@ -1,7 +1,6 @@
 import { Typography } from "@material-tailwind/react";
-import 'react-loading-skeleton/dist/skeleton.css'
 
-const SkeletonLoader = () => {
+const AssignmentsSkeliton = () => {
     const arr = [...Array(9).keys()];
     return (
         arr.map((id) => <div key={id} className="p-5 border bg-white rounded-md space-y-3">
@@ -17,4 +16,4 @@ const SkeletonLoader = () => {
     );
 };
 
-export default SkeletonLoader;
+export default AssignmentsSkeliton;

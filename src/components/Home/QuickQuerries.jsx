@@ -1,6 +1,6 @@
 import { Typography } from "@material-tailwind/react";
 import { useState } from "react";
-import faq from '../../../assets/FAQ.png';
+import faq from '../../assets/FAQ.png';
 import QuickQuerrie from "./QuickQuerrie";
 
 const quickQuerries = [

@@ -4,9 +4,6 @@ module.exports = withMT({
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        "dm-mono": "'DM Mono', monospace"
-      },
       colors: {
         'light-orange': '#FBBE36',
         'dark-gray': '#142C44'

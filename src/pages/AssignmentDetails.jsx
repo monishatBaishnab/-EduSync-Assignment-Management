@@ -1,9 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import useAxios from "../../hooks/useAxios";
+import useAuth from "../hooks/useAuth";
+import useAxios from "../hooks/useAxios";
 import { useEffect, useState } from "react";
 import { Button, Dialog, DialogBody, DialogHeader, Input, Textarea, Typography } from "@material-tailwind/react";
 import toast from "react-hot-toast";
+import { TbArrowBigUpLinesFilled } from "react-icons/tb";
+import { BsFillFileEarmarkCheckFill } from "react-icons/bs";
+import { MdDateRange } from "react-icons/md";
+import { dateDifferance, formatDate } from "../utils/dateManipulation";
+import { FaRegUser } from "react-icons/fa";
 
 const AssignmentDetails = () => {
     const [assignment, setAssignment] = useState({});
@@ -15,13 +20,12 @@ const AssignmentDetails = () => {
 
     const { _id, title, thumbnail, mark, description, level, dueDate, user: auth } = assignment || {};
 
-    const lastData = new Date(dueDate);
-    const todayDate = new Date();
-
+    const levelStyle = `${level === 'easy' ? 'bg-green-500/20 text-green-500' : level === 'medium' ? 'bg-yellow-500/20 text-yellow-500' : 'bg-red-500/20 text-red-500'}`
+    const formatedDate = formatDate(dueDate);
+    const dateDiff = dateDifferance(dueDate);
 
     const handleOpen = () => setOpen(!open);
-
-    const handleResponse = async (e) => {
+    const handleResponse = async (e) => {   
         const toastId = toast.loading('Submiting assignment...');
         e.preventDefault();
         const form = e.target;
@@ -54,7 +58,7 @@ const AssignmentDetails = () => {
 
         handleOpen();
     }
-
+    
     useEffect(() => {
         axios.get(`/assignments/${id}?email=${user.email}`)
             .then(res => setAssignment(res.data));
@@ -62,30 +66,30 @@ const AssignmentDetails = () => {
 
     return (
         <div className="bg-blue-gray-50">
-            <div className="container">
-                <div className="max-w-screen-md bg-white px-5 pt-10 pb-5 mx-auto space-y-5 rounded-md">
-                    <Typography variant="h3" className="text-center font-medium">{title ? title : ''}</Typography>
-                    <div className="w-full h-[400px] rounded overflow-hidden">
-                        <img className="w-full h-full object-cover" src={thumbnail ? thumbnail : ''} alt={title} />
+            <div className="container grid gap-5 grid-cols-1 md:grid-cols-5">
+                <div className="w-full h-full sm:h-[300px] overflow-hidden rounded bg-white p-5 col-span-2">
+                    <img className="h-full w-full object-cover rounded" src={thumbnail} alt={title} />
+                </div>
+                <div className="bg-white rounded p-5 space-y-4 col-span-3">
+                    <Typography variant="h4" className="border-b pb-4">{title}</Typography>
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                        <Typography className="flex items-center gap-2 font-normal">Total Mark: <Typography className="px-2 flex items-center gap-1 rounded bg-blue-gray-50 text-blue-gray-800"><BsFillFileEarmarkCheckFill />{mark}</Typography></Typography>
+                        <Typography className="flex items-center gap-2 font-normal">Level: <Typography className={`px-2 flex items-center gap-1 rounded ${levelStyle}`}><TbArrowBigUpLinesFilled />{level}</Typography></Typography>
                     </div>
-                    <div className="space-y-5">
-                        <Typography variant="paragraph" className="">{description ? description : ''}</Typography>
-                        <div>
-                            <Typography variant="h6" className="font-medium">Due Date: {dueDate ? dueDate : ''}</Typography>
-                            <Typography variant="h6" className="font-medium">Mark: {mark ? mark : ''}</Typography>
-                            <Typography variant="h6" className="font-medium">Level: {level ? level : ''}</Typography>
-                            <Typography variant="h6" className="font-medium">Creator: {auth?.email ? auth?.email : ''}</Typography>
-                        </div>
-                        {
-                            lastData >= todayDate ?
-                                <Button onClick={() => setOpen(true)} className="capitalize w-full font-medium text-base py-2" color="blue">Take Assignment</Button> :
-                                <Button onClick={() => setOpen(true)} className="capitalize w-full font-medium text-base py-2" color="blue" disabled>Deadline Finished</Button>
-                        }
+                    <Typography variant="paragraph" className="font-normal text-blue-gray-600 text-justify">{description}</Typography>
+                    <div className="flex items-center justify-between flex-wrap">
+                        <Typography className="font-normal flex items-center gap-2 text-blue-gray-800"><MdDateRange className="text-lg text-blue-500" />{dateDiff ? formatedDate : 'Deadline Finished'}</Typography>
+                        <Typography className="font-normal flex items-center gap-2 text-blue-gray-800"><FaRegUser className="text-lg text-blue-500" />{auth?.email}</Typography>
+                    </div>
+                    <div className="flex items-center gap-3 border-t pt-4">
+                        <Button onClick={handleOpen} disabled={!dateDiff} color="blue" >Submit Assignment</Button>
+                        <Button color="green">Answers</Button>
                     </div>
                 </div>
             </div>
+            {/* <DetailsSkeliton /> */}
             <Dialog open={open} handler={handleOpen}>
-                <DialogHeader className="justify-center">
+                <DialogHeader className="justify-center border-b">
                     <Typography variant="h5" className="font-medium text-center">Submit Assignment Response</Typography>
                 </DialogHeader>
                 <DialogBody>
@@ -99,7 +103,7 @@ const AssignmentDetails = () => {
                                 <Typography as='label' htmlFor='note' className="mb-2">Assignment Note</Typography>
                                 <Textarea required name="note" placeholder="Assignment note" id="note" className=" !border-t-blue-gray-200 focus:!border-t-gray-900" labelProps={{ className: "before:content-none after:content-none", }} />
                             </div>
-                            <Button type="submit" className="capitalize font-medium py-2 text-base">Subbmit Response</Button>
+                            <Button type="submit" color="blue">Submit Assignment</Button>
                         </div>
                     </form>
                 </DialogBody>

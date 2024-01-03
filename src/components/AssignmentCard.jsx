@@ -7,7 +7,7 @@ import useAxios from "../hooks/useAxios";
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 
-const AssignmentCard = ({ assignment, refetch}) => {
+const AssignmentCard = ({ assignment, refetch }) => {
     const { _id, title, thumbnail, mark, level, user: auth } = assignment || {};
     const { user } = useAuth();
     const navigate = useNavigate();
@@ -39,7 +39,7 @@ const AssignmentCard = ({ assignment, refetch}) => {
                 <img src={thumbnail} alt="" className="w-full h-full object-cover" />
             </div>
             <div className="space-y-4 mt-3">
-                <Typography variant="h6">{title}</Typography>
+                <Typography variant="h6">{title?.length > 25 ? title?.slice(0, 25)+'...' : title}</Typography>
                 <div className="flex flex-col">
                     <span>Mark: <span className="bg-light-orange/50 px-2 rounded">{mark}</span></span>
                     <span>Lacel: <span className="bg-light-orange/50 px-2 rounded">{level}</span></span>

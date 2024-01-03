@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
-import SkeletonLoader from './SkeletonLoader';
 import AssignmentCard from './AssignmentCard';
 import FilterPanel from './FilterPanel';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import useAxios from '../../hooks/useAxios';
 import Pagination from './Pagination';
+import AssignmentsSkeliton from '../SharedComponents/SkelitonLoader/AssignmentsSkeliton';
 
 const AssignmentsContainer = () => {
     // State for the current page and items per page
@@ -44,7 +44,7 @@ const AssignmentsContainer = () => {
                     <div className='md:col-span-2 lg:col-span-3'>
                         <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                             {
-                                isLoading ? <SkeletonLoader /> :
+                                isLoading ? <AssignmentsSkeliton /> :
                                     assignments?.data?.assignments?.map(assignment => <AssignmentCard refetch={refetch} assignment={assignment} key={assignment._id} />)
                             }
                         </div>

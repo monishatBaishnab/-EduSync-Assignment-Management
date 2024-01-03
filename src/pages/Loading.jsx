@@ -1,4 +1,4 @@
-import useLottieAnimation from "../../hooks/useLottieAnimation";
+import useLottieAnimation from "../hooks/useLottieAnimation";
 
 const Loading = () => {
     const {loading} = useLottieAnimation();

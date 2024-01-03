@@ -1,6 +1,6 @@
 import { Typography } from "@material-tailwind/react";
 import FeatureCard from "./FeatureCard";
-import useLottieAnimation from "../../../hooks/useLottieAnimation";
+import useLottieAnimation from "../../hooks/useLottieAnimation";
 
 const Features = () => {
     const { collaboration, resource, marking, managemen } = useLottieAnimation();

@@ -1,5 +1,5 @@
 import { Button, Typography } from "@material-tailwind/react";
-import useLottieAnimation from "../../hooks/useLottieAnimation";
+import useLottieAnimation from "../hooks/useLottieAnimation";
 import { Link } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 

@@ -1,7 +1,7 @@
 import { Button, Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from 'react-icons/bs';
-import hero_frame from '../../../assets/hero-frame.png';
+import hero_frame from '../../assets/hero-frame.png';
 import Tilt from 'react-parallax-tilt';
 
 const Header = () => {

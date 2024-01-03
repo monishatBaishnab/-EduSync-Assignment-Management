@@ -20,7 +20,7 @@ const AssignmentCard = ({ assignment }) => {
                 <img src={thumbnail} alt={title} className="w-full h-full object-cover" />
             </div>
             <div className="space-y-4 mt-3">
-                <Typography variant="h6">{title}</Typography>
+                <Typography variant="h6">{title?.length > 20 ? title?.slice(0, 20)+'...' : title}</Typography>
                 <div className="flex justify-between">
                     <span className="px-2 flex items-center gap-1 rounded bg-blue-gray-50 text-blue-gray-800"><BsFillFileEarmarkCheckFill />{mark}</span>
                     <span className={`px-2 flex items-center gap-1 rounded ${levelStyle}`}><TbArrowBigUpLinesFilled />{level}</span>
