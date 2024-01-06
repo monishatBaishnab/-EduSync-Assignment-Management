@@ -8,8 +8,8 @@ const FilterPanel = ({ states }) => {
 
     return (
         <div className='bg-white p-5 border rounded'>
-            <FilterOption title={"Filter by Level"} items={levelFilter} action={setFilterValue} />
             <FilterOption title={"Sort Assignments"} items={sortValue} action={setSortValue} />
+            <FilterOption title={"Filter by Level"} items={levelFilter} action={setFilterValue} />
         </div>
     );
 };

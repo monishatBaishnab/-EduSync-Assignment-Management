@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxios from "../hooks/useAxios";
 import { useEffect, useState } from "react";
@@ -9,16 +9,14 @@ import { MdDateRange } from "react-icons/md";
 import { dateDifferance, formatDate } from "../utils/dateManipulation";
 import { FaRegUser } from "react-icons/fa";
 import CreateSolution from "../components/Details/CreateSolution";
-import toast from "react-hot-toast";
 const AssignmentDetails = () => {
     const [assignment, setAssignment] = useState({});
     const [open, setOpen] = useState(false);
     const { user } = useAuth();
     const { id } = useParams();
     const axios = useAxios();
-    const navigate = useNavigate();
 
-    const { _id, title, thumbnail, mark, description, level, dueDate, user: auth } = assignment || {};
+    const { title, thumbnail, mark, description, level, dueDate, user: auth } = assignment || {};
 
     const levelStyle = `${level === 'easy' ? 'bg-green-500/20 text-green-500' : level === 'medium' ? 'bg-yellow-500/20 text-yellow-500' : 'bg-red-500/20 text-red-500'}`
     const formatedDate = formatDate(dueDate);

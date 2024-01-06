@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
-import signin from '../../assets/signin.png';
-import SignInForm from "../../layouts/SignInForm/SignInForm";
+import signin from '../assets/signin.png';
+import SignInForm from '../components/SignIn/SignInForm';
 
 const SignIn = () => {
     const {state} = useLocation();
