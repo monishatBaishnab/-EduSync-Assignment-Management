@@ -19,7 +19,7 @@ const DetailsContainer = ({ assignment }) => {
 
     return (
         <div>
-            <div className="container grid gap-5 grid-cols-1 md:grid-cols-5">
+            <div className="grid gap-5 grid-cols-1 md:grid-cols-5">
                 <div className="w-full h-full sm:h-[300px] overflow-hidden rounded bg-white p-5 col-span-2">
                     <img className="h-full w-full object-cover rounded" src={thumbnail} alt={title} />
                 </div>
