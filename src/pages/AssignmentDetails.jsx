@@ -8,7 +8,7 @@ const AssignmentDetails = () => {
     const { id } = useParams();
     const axios = useAxiosSecure();
 
-    const { data: assignment, isLoading } = useQuery({ queryKey: ['details'], queryFn: () => fetchData(axios, `/assignments/${id}`) })
+    const { data: assignment, isLoading } = useQuery({ queryKey: ['details', id], queryFn: () => fetchData(axios, `/assignments/${id}`) })
 
     return (
         <div className="bg-blue-gray-50">

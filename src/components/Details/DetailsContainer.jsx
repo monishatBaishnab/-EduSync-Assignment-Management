@@ -10,7 +10,7 @@ import CreateSolution from "./CreateSolution";
 
 const DetailsContainer = ({ assignment }) => {
     const [open, setOpen] = useState(false);
-    const { title, thumbnail, maxMark, description, level, deadline, author: auth } = assignment || {};
+    const {_id, title, thumbnail, maxMark, description, level, deadline, author: auth } = assignment || {};
 
     const levelStyle = `${level === 'easy' ? 'bg-green-500/20 text-green-500' : level === 'medium' ? 'bg-yellow-500/20 text-yellow-700' : 'bg-red-500/20 text-red-500'}`
     const formatedDate = formatDate(deadline);
@@ -40,7 +40,7 @@ const DetailsContainer = ({ assignment }) => {
                     </div>
                 </div>
             </div>
-            <CreateSolution open={open} handleOpen={handleOpen} />
+            <CreateSolution assignmentId={_id} open={open} handleOpen={handleOpen} />
         </div>
     );
 };
