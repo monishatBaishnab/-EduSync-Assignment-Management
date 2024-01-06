@@ -3,7 +3,7 @@ import axios from "axios";
 import useAuth from "./useAuth";
 
 const instance = axios.create({
-    baseURL: 'https://edu-sync-server.vercel.app/api/v1',
+    baseURL: import.meta.env.VITE_BASE_URL,
     withCredentials: true,
 })
 

@@ -39,13 +39,13 @@ const AuthContext = ({ children }) => {
             setLoading(false);
             if (currentUser) {
                 try {
-                    await axios.post('/token', { email: currentUser?.email });
+                    await axios.post('/create-access-key', { email: currentUser?.email });
                 } catch (error) {
                     console.log(error);
                 }
             } else {
                 try {
-                    await axios.post('/logout');
+                    await axios.post('/clear-access-key');
                 } catch (error) {
                     console.log(error);
                 }

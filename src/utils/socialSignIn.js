@@ -7,13 +7,13 @@ export const socialSignIn = async (axios, signIn, navigate, state) => {
 
         if (user) {
             try {
-                await axios.post('/token', { email: user?.email });
+                await axios.post('/create-access-key', { email: user?.email });
             } catch (error) {
                 console.log(error);
             }
         } else {
             try {
-                await axios.post('/logout');
+                await axios.post('/clear-access-key');
             } catch (error) {
                 console.log(error);
             }
