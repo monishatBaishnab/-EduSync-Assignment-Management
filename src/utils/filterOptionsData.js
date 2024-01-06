@@ -6,6 +6,5 @@ export const levelFilter = [
 ];
 export const sortValue = [
     { id: 3, value: "default" },
-    { id: 2, value: "ascending" },
     { id: 1, value: "descending" }
 ];
