@@ -2,14 +2,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxios from "../hooks/useAxios";
 import { useEffect, useState } from "react";
-import { Button, Dialog, DialogBody, DialogHeader, Input, Textarea, Typography } from "@material-tailwind/react";
-import toast from "react-hot-toast";
+import { Button, Typography } from "@material-tailwind/react";
 import { TbArrowBigUpLinesFilled } from "react-icons/tb";
 import { BsFillFileEarmarkCheckFill } from "react-icons/bs";
 import { MdDateRange } from "react-icons/md";
 import { dateDifferance, formatDate } from "../utils/dateManipulation";
 import { FaRegUser } from "react-icons/fa";
-
+import CreateSolution from "../components/Details/CreateSolution";
+import toast from "react-hot-toast";
 const AssignmentDetails = () => {
     const [assignment, setAssignment] = useState({});
     const [open, setOpen] = useState(false);
@@ -23,42 +23,41 @@ const AssignmentDetails = () => {
     const levelStyle = `${level === 'easy' ? 'bg-green-500/20 text-green-500' : level === 'medium' ? 'bg-yellow-500/20 text-yellow-500' : 'bg-red-500/20 text-red-500'}`
     const formatedDate = formatDate(dueDate);
     const dateDiff = dateDifferance(dueDate);
-
     const handleOpen = () => setOpen(!open);
-    const handleResponse = async (e) => {   
-        const toastId = toast.loading('Submiting assignment...');
-        e.preventDefault();
-        const form = e.target;
-        const pdf = form.pdf.value;
-        const note = form.note.value;
+    // const handleResponse = async (e) => {
+    //     const toastId = toast.loading('Submiting assignment...');
+    //     e.preventDefault();
+    //     const form = e.target;
+    //     const pdf = form.pdf.value;
+    //     const note = form.note.value;
 
-        const submitedAssignment = {
-            asssignmentId: _id,
-            title,
-            mark,
-            submitedDate: new Date().toLocaleDateString(),
-            level,
-            status: 'pending',
-            pdf,
-            note,
-            submitedUser: user.email,
-            givenMark: null,
-            givenMarkUser: null,
-            feedback: null
-        }
+    //     const submitedAssignment = {
+    //         asssignmentId: _id,
+    //         title,
+    //         mark,
+    //         submitedDate: new Date().toLocaleDateString(),
+    //         level,
+    //         status: 'pending',
+    //         pdf,
+    //         note,
+    //         submitedUser: user.email,
+    //         givenMark: null,
+    //         givenMarkUser: null,
+    //         feedback: null
+    //     }
 
-        const res = await axios.post(`/submited/assignments?email=${user.email}`, submitedAssignment);
-        const data = await res.data;
-        if (data.acknowledged) {
-            toast.success('Submited success.', { id: toastId });
-            navigate('/submited');
-        } else {
-            toast.error('Inernal server error.', { id: toastId });
-        }
+    //     const res = await axios.post(`/submited/assignments?email=${user.email}`, submitedAssignment);
+    //     const data = await res.data;
+    //     if (data.acknowledged) {
+    //         toast.success('Submited success.', { id: toastId });
+    //         navigate('/submited');
+    //     } else {
+    //         toast.error('Inernal server error.', { id: toastId });
+    //     }
 
-        handleOpen();
-    }
-    
+    //     handleOpen();
+    // }
+
     useEffect(() => {
         axios.get(`/assignments/${id}?email=${user.email}`)
             .then(res => setAssignment(res.data));
@@ -82,32 +81,12 @@ const AssignmentDetails = () => {
                         <Typography className="font-normal flex items-center gap-2 text-blue-gray-800"><FaRegUser className="text-lg text-blue-500" />{auth?.email}</Typography>
                     </div>
                     <div className="flex items-center gap-3 border-t pt-4">
-                        <Button onClick={handleOpen} disabled={!dateDiff} color="blue" >Submit Assignment</Button>
-                        <Button color="green">Answers</Button>
+                        <Button onClick={handleOpen} disabled={!dateDiff} className="bg-light-orange shadow-none hover:shadow-none">Create Solution</Button>
+                        {/* <Button color="green" className=" shadow-none hover:shadow-none">Solutions</Button> */}
                     </div>
                 </div>
             </div>
-            {/* <DetailsSkeliton /> */}
-            <Dialog open={open} handler={handleOpen}>
-                <DialogHeader className="justify-center border-b">
-                    <Typography variant="h5" className="font-medium text-center">Submit Assignment Response</Typography>
-                </DialogHeader>
-                <DialogBody>
-                    <form onSubmit={handleResponse}>
-                        <div className="space-y-5">
-                            <div>
-                                <Typography as='label' htmlFor='pdf' className="mb-2">Assignment PDF</Typography>
-                                <Input required name="pdf" placeholder="Assignment PDF URL" id="pdf" className=" !border-t-blue-gray-200 focus:!border-t-gray-900" labelProps={{ className: "before:content-none after:content-none", }} />
-                            </div>
-                            <div>
-                                <Typography as='label' htmlFor='note' className="mb-2">Assignment Note</Typography>
-                                <Textarea required name="note" placeholder="Assignment note" id="note" className=" !border-t-blue-gray-200 focus:!border-t-gray-900" labelProps={{ className: "before:content-none after:content-none", }} />
-                            </div>
-                            <Button type="submit" color="blue">Submit Assignment</Button>
-                        </div>
-                    </form>
-                </DialogBody>
-            </Dialog>
+            <CreateSolution open={open} handleOpen={handleOpen} />
         </div>
     );
 };
