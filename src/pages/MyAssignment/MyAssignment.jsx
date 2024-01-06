@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
-import useAxios from "../../hooks/useAxios";
 import { Typography } from "@material-tailwind/react";
 import NoDataFound from "../../components/NoDataFound";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
@@ -8,9 +7,10 @@ import { useState } from "react";
 import bronze from '../../assets/badge/Bronze.png';
 import silver from '../../assets/badge/Silver.png';
 import gold from '../../assets/badge/Gold.png';
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyAssignment = () => {
-    const axios = useAxios();
+    const axios = useAxiosSecure();
     const { user } = useAuth();
     const [totalSubmite, setTotalSubmit] = useState(0);
 

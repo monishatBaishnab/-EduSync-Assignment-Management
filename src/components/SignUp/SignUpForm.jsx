@@ -6,12 +6,12 @@ import { BiImageAlt } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
-import useAxios from "../../hooks/useAxios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const SignUpForm = () => {
     const { signUpWithEmailPass, updateUser } = useAuth();
     const navigate = useNavigate();
-    const axios = useAxios();
+    const axios = useAxiosSecure();
 
     const handleSingUp = async(e) => {
         e.preventDefault();

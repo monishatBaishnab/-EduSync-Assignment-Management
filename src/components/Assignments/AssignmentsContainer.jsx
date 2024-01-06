@@ -3,9 +3,9 @@ import AssignmentCard from './AssignmentCard';
 import FilterPanel from './FilterPanel';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
-import useAxios from '../../hooks/useAxios';
 import Pagination from './Pagination';
 import AssignmentsSkeliton from '../SharedComponents/SkelitonLoader/AssignmentsSkeliton';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const AssignmentsContainer = () => {
     // State for the current page and items per page
@@ -17,7 +17,7 @@ const AssignmentsContainer = () => {
     const [sortValue, setSortValue] = useState('');
 
 
-    const axios = useAxios();
+    const axios = useAxiosSecure();
     // Construct the API URL based on filter, sort, and pagination settings
     const url = `/assignments?level=${filterValue}&sort=mark&sortOrder=${sortValue === 'ascending' ? 'asc' : 'desc'}&page=${page}&offset=${offset}`;
 

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import { Button, Dialog, DialogBody, DialogHeader, Input, Textarea, Typography } from "@material-tailwind/react";
 import toast from "react-hot-toast";
 import PdfView from "../../layouts/PDF_VIEW/Pdf-view";
 import { pdfjs } from 'react-pdf';
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.js',
@@ -16,7 +16,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 const SubmitedAssignmentDetails = () => {
     const { id } = useParams();
-    const axios = useAxios();
+    const axios = useAxiosSecure();
     const { user } = useAuth();
     const [submitedAssignment, setSubmiteAssignment] = useState({});
     const [open, setOpen] = useState(false);

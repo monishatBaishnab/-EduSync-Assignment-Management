@@ -4,15 +4,15 @@ import { FcGoogle } from 'react-icons/fc';
 import { BsGithub } from "react-icons/bs";
 import PropTypes from 'prop-types';
 import useAuth from "../../hooks/useAuth";
-import useAxios from "../../hooks/useAxios";
 import { socialSignIn } from "../../utils/socialSignIn";
 import SocialButton from "./SocialButton";
 import SignInForm from "./SignInForm";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const SignInContainer = ({ state }) => {
     const { signInWithGoogle, signInWitGithub } = useAuth();
     const navigate = useNavigate();
-    const axios = useAxios();
+    const axios = useAxiosSecure();
     
     const handleGoogleSignin = async () => {
         await socialSignIn(axios, signInWithGoogle, navigate, state);

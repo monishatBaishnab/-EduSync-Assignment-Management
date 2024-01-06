@@ -2,7 +2,7 @@ import { auth } from "../firebase/firebase.config";
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types'
-import useAxios from "../hooks/useAxios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 // Create a context to manage user authentication.
 export const UserContext = createContext();
@@ -18,7 +18,7 @@ const AuthContext = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const axios = useAxios();
+    const axios = useAxiosSecure();
 
     // Function to handle authentication actions.
     const handleAuth = (authAction, ...params) => {

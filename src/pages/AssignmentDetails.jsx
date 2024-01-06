@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import useAxios from "../hooks/useAxios";
 import { useEffect, useState } from "react";
 import { Button, Typography } from "@material-tailwind/react";
 import { TbArrowBigUpLinesFilled } from "react-icons/tb";
@@ -9,12 +8,13 @@ import { MdDateRange } from "react-icons/md";
 import { dateDifferance, formatDate } from "../utils/dateManipulation";
 import { FaRegUser } from "react-icons/fa";
 import CreateSolution from "../components/Details/CreateSolution";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 const AssignmentDetails = () => {
     const [assignment, setAssignment] = useState({});
     const [open, setOpen] = useState(false);
     const { user } = useAuth();
     const { id } = useParams();
-    const axios = useAxios();
+    const axios = useAxiosSecure();
 
     const { title, thumbnail, mark, description, level, dueDate, user: auth } = assignment || {};
 

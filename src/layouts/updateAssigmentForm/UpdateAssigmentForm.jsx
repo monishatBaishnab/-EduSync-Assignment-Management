@@ -5,15 +5,15 @@ import useAuth from "../../hooks/useAuth";
 // import useAxios from "../../hooks/useAxios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import useAxios from "../../hooks/useAxios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const UpdateAssignmentForm = ({ title, description, assignment = {} }) => {
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useAuth();
     const [lavel, setLavel] = useState('');
-    const axios = useAxios();
+    const axios = useAxiosSecure();
     const navigate = useNavigate();
 
     // Destructuring assignment object for initialization

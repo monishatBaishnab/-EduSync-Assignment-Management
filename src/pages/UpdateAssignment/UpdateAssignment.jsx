@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
-import useAxios from "../../hooks/useAxios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import UpdateAssignmentForm from "../../layouts/updateAssigmentForm/updateAssigmentForm";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const UpdateAssignment = () => {
     const [assignment, setAssignment] = useState({});
     const { id } = useParams();
-    const axios = useAxios();
+    const axios = useAxiosSecure();
     const { user } = useAuth();
     
 

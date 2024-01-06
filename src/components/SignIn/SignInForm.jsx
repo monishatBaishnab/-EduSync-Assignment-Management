@@ -1,6 +1,6 @@
 import { Button, Input } from "@material-tailwind/react";
 import toast from "react-hot-toast";
-import useAxios from "../../hooks/useAxios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import PropTypes from 'prop-types';
@@ -10,7 +10,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 const SignInForm = ({state}) => {
     const { signInWithEmailPass } = useAuth();
     const navigate = useNavigate();
-    const axios = useAxios();
+    const axios = useAxiosSecure();
 
     const handleSignIn = async (e) => {
         e.preventDefault();

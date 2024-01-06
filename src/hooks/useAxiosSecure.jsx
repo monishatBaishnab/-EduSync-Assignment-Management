@@ -7,7 +7,7 @@ const instance = axios.create({
     withCredentials: true,
 })
 
-const useAxios = () => {
+const useAxiosSecure = () => {
     const auth = useAuth();
 
     if (auth) {
@@ -25,4 +25,4 @@ const useAxios = () => {
     return instance;
 };
 
-export default useAxios;
+export default useAxiosSecure;

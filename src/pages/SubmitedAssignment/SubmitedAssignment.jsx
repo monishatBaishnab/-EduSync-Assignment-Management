@@ -1,4 +1,3 @@
-import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { IconButton, Tab, TabPanel, Tabs, TabsBody, TabsHeader, Typography } from "@material-tailwind/react";
@@ -6,9 +5,10 @@ import { AiOutlineEye } from 'react-icons/ai';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import NoDataFound from "../../components/NoDataFound";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const SubmitedAssignment = () => {
-    const axios = useAxios();
+    const axios = useAxiosSecure();
     const { user } = useAuth();
     const navigate = useNavigate();
     const [status, setStutus] = useState('pending');
