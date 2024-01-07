@@ -6,7 +6,7 @@ import { FaLink } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
-const CreateSolution = ({ handleOpen, open, assignmentId }) => {
+const CreateSolution = ({ handleOpen, open, assignmentId, solutionRefetch }) => {
     const [links, setLinks] = useState([]);
     const [explanation, setExplanation] = useState('');
     const linkRef = useRef('');
@@ -45,6 +45,7 @@ const CreateSolution = ({ handleOpen, open, assignmentId }) => {
             setExplanation('');
             setLinks([]);
             handleOpen();
+            solutionRefetch();
             toast.success('Solution Submted.')
         } catch (error) {
             toast.error('Error Occurred.');
@@ -86,6 +87,7 @@ CreateSolution.propTypes = {
     handleOpen: PropTypes.func,
     open: PropTypes.bool,
     assignmentId: PropTypes.string,
+    solutionRefetch: PropTypes.func,
 }
 
 export default CreateSolution;

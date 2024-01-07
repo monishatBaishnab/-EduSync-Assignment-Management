@@ -8,7 +8,7 @@ import { useState } from "react";
 import PropTypes from 'prop-types';
 import CreateSolution from "./CreateSolution";
 
-const DetailsContainer = ({ assignment }) => {
+const DetailsContainer = ({ assignment, solutionRefetch }) => {
     const [open, setOpen] = useState(false);
     const {_id, title, thumbnail, maxMark, description, level, deadline, author: auth } = assignment || {};
 
@@ -40,13 +40,14 @@ const DetailsContainer = ({ assignment }) => {
                     </div>
                 </div>
             </div>
-            <CreateSolution assignmentId={_id} open={open} handleOpen={handleOpen} />
+            <CreateSolution solutionRefetch={solutionRefetch} assignmentId={_id} open={open} handleOpen={handleOpen} />
         </div>
     );
 };
 
 DetailsContainer.propTypes = {
     assignment: PropTypes.object,
+    solutionRefetch: PropTypes.func,
 }
 
 export default DetailsContainer;
